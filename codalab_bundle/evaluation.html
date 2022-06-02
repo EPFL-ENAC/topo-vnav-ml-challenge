@@ -1,0 +1,38 @@
+<H3>Submission Format</H3>
+
+To submit your results to the leaderboard you must construct a submission zip file containing a CSV file.<br>
+
+This file must have the follwing columns (without column names) : 
+<ul>
+<li>Column 1 : X coodinate</li>
+<li>Column 2 : Y coodinate</li>
+<li>Column 3 : Altitudes</li>
+<li>Column 4 : Azimuth</li>
+<li>Column 5 : Tilt</li>
+<li>Column 6 : Roll</li>
+</ul>
+
+Coordinates are in a local coordinate system. 
+
+
+<H3>Evaluation Criterias</H3>
+
+The median error on the coordinates is calculated. Based on this value, the score is established as follow : 
+
+<ul>
+<li>if the median = 0 m &rarr; score on coordinates = 100</li>
+<li>if the median > 100 m &rarr; score on coordinates = 0</li>
+<li>if 0 < the median < 100 m &rarr; score on coordinates = 100 - the median </li>
+</ul>
+
+The median error on the angles is calculated. Based on this value, the score is established as follow : 
+<ul>
+<li>score on angles = (360 - median) * 100 / 360</li>
+</ul>
+
+<br> 
+overall score = score on coordinates * 0.75 + score on angles * 0.25
+
+
+
+
