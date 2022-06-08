@@ -194,10 +194,10 @@ if __name__ == '__main__':
     origin_of_local_coordinate_system_x = 6.5668
     origin_of_local_coordinate_system_y = 46.5191
     origin_of_local_coordinate_system_z = 390
-    crossloc_pose_result_folder = 'C:\\projects\\vnav\\CrossLoc\\weight\\coord_pred_ckpt_iter_crossloc_urbanscape_in-place.net_zero'
-    path_file_csv = 'C:\\projects\\vnav\\CrossLoc\\weight\\est.csv'
+    crossloc_pose_result_folder = 'C:\\projects\\vnav\\CrossLoc\\weight\\coord_pred_ckpt_iter_crossloc_naturescape_in-place.net_test_drone_real'
+    path_file_csv = 'C:\\projects\\vnav\\CrossLoc\\weight\\gt.csv'
 
-    create_csv_for_codalab_submission(crossloc_pose_result_folder, 'pose_pred.npy', path_file_csv,
+    create_csv_for_codalab_submission(crossloc_pose_result_folder, 'pose_gt.npy', path_file_csv,
                                       origin_of_local_coordinate_system_x,
                                       origin_of_local_coordinate_system_y,
                                       origin_of_local_coordinate_system_z)

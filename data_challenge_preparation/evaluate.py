@@ -1,7 +1,6 @@
-#!/usr/bin/env python
-import sys
 import os
-import os.path
+import sys
+
 from csv_competition_evaluation import median_errors,scoring
 
 
@@ -42,14 +41,4 @@ if os.path.isdir(submit_dir) and os.path.isdir(truth_dir):
     score = scoring(median_error_on_coordinates, median_error_on_angles)
 
     output_file.write("correct:%s"%score)
-    
-
-
     output_file.close()
-
-    html = "<p>Median error on coodinate (translation) :{} m</p><p>Median error on angles (rotation) :{}°</p><p>Overall score :{}</p>".format(median_error_on_coordinates,median_error_on_angles,score)
-    output_filename = os.path.join(output_dir, 'scores.html')
-    output_file = open(output_filename, 'w')
-    output_file.write(html)
-    output_file.close()
-

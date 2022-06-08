@@ -16,7 +16,7 @@ for folder in folder_to_zip :
 
 # zip file
 list_of_files = os.listdir(current_folder)
-list_of_files_to_zip = [i for i in list_of_files if i.endswith(('.html','.zip','.yaml'))]
+list_of_files_to_zip = [i for i in list_of_files if i.endswith(('.html','.zip','.yaml','.jpg'))]
 
 # Delete all bundle
 bundle_path = os.path.join(current_folder,bundle_file_name)

@@ -25,9 +25,9 @@ def get_rotation_ned_in_ecef(lon, lat):
                    [0, 1, 0],
                    [-np.sin(-lat - np.pi / 2), 0, np.cos(-lat - np.pi / 2)]])
  NED = np.matmul(R_N0, R__E1)
- # assert abs(np.linalg.det(
- #  NED) - 1.0) < 1e-6, 'NED in NCEF rotation mat. does not have unit determinant, it is: {:.2f}'.format(
- #  np.linalg.det(NED))
+ assert abs(np.linalg.det(
+  NED) - 1.0) < 1e-6, 'NED in NCEF rotation mat. does not have unit determinant, it is: {:.2f}'.format(
+  np.linalg.det(NED))
  return NED
 
 
@@ -111,6 +111,7 @@ def csc_to_numpy(path_csv_file : str, origin_of_local_coordinate_system_x: float
     poses = np.genfromtxt(path_csv_file, delimiter=',')
     for pose in poses :
         lng, lat, alt, azimuth, tilt, roll = list(pose)
+
         matrix_angles = get_pose_mat_original_angles([lng, lat, alt, azimuth, tilt, roll])
         global_coordinates = np.array(wgs84_to_ecef(lng,lat,alt))
         local_coordinates =  global_coordinates - origin_xyz
@@ -151,11 +152,9 @@ def median_errors(ai_competition_result_file_path,ai_competition_gt_file_path,or
             rot_err = np.reshape(np.linalg.norm(rot_err, axis=1), -1) / np.pi * 180.
             rot_err = rot_err[0]
             list_error_on_angles.append(rot_err)
-            # print('rot_err :',rot_err , 'transl_err : ',transl_err)
 
         median_error_on_coordinates = np.median(list_error_on_coordinates)
         median_error_on_angles = np.median(list_error_on_angles)
-
         return median_error_on_coordinates, median_error_on_angles
 
 
@@ -186,22 +185,15 @@ if __name__ == '__main__':
     origin_of_local_coordinate_system_y = 46.5191
     origin_of_local_coordinate_system_z = 390
 
-    ai_competition_result_file_path = 'C:\\projects\\vnav\\CrossLoc\\weight\\est2.csv'
+    ai_competition_result_file_path = 'C:\\projects\\vnav\\CrossLoc\\weight\\est.csv'
     ai_competition_gt_file_path = 'C:\\projects\\vnav\\CrossLoc\\weight\\gt.csv'
-
-    median_errors(ai_competition_result_file_path,
-                  ai_competition_gt_file_path,
-                  origin_of_local_coordinate_system_x,
-                  origin_of_local_coordinate_system_y,
-                  origin_of_local_coordinate_system_z)
 
     median_error_on_coordinates, median_error_on_angles = median_errors(ai_competition_result_file_path,
                                                                         ai_competition_gt_file_path,
                                                                         origin_of_local_coordinate_system_x,
                                                                         origin_of_local_coordinate_system_y,
                                                                         origin_of_local_coordinate_system_z)
-    score = scoring(median_error_on_coordinates,median_error_on_angles)
-
+    scoring(median_error_on_coordinates,median_error_on_angles)
 
 
 
