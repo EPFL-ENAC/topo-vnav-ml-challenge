@@ -201,14 +201,16 @@ def median_errors(ai_competition_result_file_path,ai_competition_gt_file_path,or
         median_error_on_coordinates = np.median(list_error_on_coordinates)
         median_error_on_angles = np.median(list_error_on_angles)
         median_uncertainty_on_coordinates = np.median(list_uncertainty_on_coordinates)
+        median_uncertainty_on_angle = None
 
-        return median_error_on_coordinates, median_error_on_angles, median_uncertainty_on_coordinates
-
-
-
+        return median_error_on_coordinates, median_error_on_angles, median_uncertainty_on_coordinates, median_uncertainty_on_angle
 
 
-def scoring(median_error_on_coordinates, median_error_on_angles) :
+
+
+
+def scoring(median_error_on_coordinates, median_error_on_angles,median_uncertainty_on_coordinates,
+            median_uncertainty_on_angle) :
 
     if median_error_on_coordinates == 0 :
         score_on_coordinates = 100
@@ -224,7 +226,21 @@ def scoring(median_error_on_coordinates, median_error_on_angles) :
     else :
         score_on_angle = (180 - median_error_on_angles) / 180*100
 
-    overall_score = 0.6 * score_on_coordinates + 0.4 * score_on_angle
+    if median_uncertainty_on_coordinates and median_uncertainty_on_coordinates > 0.5 \
+            and median_uncertainty_on_coordinates < 1 :
+        score_u_on_coordinates = 100
+    else :
+        score_u_on_coordinates = 0
+
+    if median_uncertainty_on_angle and median_uncertainty_on_angle > 0.5 \
+            and median_uncertainty_on_angle < 1 :
+        score_u_on_angle = 100
+    else :
+        score_u_on_angles = 0
+
+
+    overall_score = 0.4 * score_on_coordinates + 0.2 * score_on_angle + 0.2 * score_u_on_coordinates + 0.2 * score_u_on_angles
+
     return overall_score
 
 
@@ -239,16 +255,15 @@ if __name__ == '__main__':
     ai_competition_gt_file_path = 'C:\\projects\\vnav\\CrossLoc\\weight\\gt.csv'
 
 
-    median_error_on_coordinates, median_error_on_angles = median_errors(ai_competition_result_file_path,
-                                                                        ai_competition_gt_file_path,
-                                                                        origin_of_local_coordinate_system_x,
-                                                                        origin_of_local_coordinate_system_y,
-                                                                        origin_of_local_coordinate_system_z)
+    result  = median_errors(ai_competition_result_file_path, ai_competition_gt_file_path,
+                            origin_of_local_coordinate_system_x,
+                            origin_of_local_coordinate_system_y,
+                            origin_of_local_coordinate_system_z)
+
+    median_error_on_coordinates, median_error_on_angles, median_uncertainty_on_coordinates, median_uncertainty_on_angle = result
 
 
-
-
-    score = scoring(median_error_on_coordinates,median_error_on_angles)
+    score = scoring(median_error_on_coordinates, median_error_on_angles, median_uncertainty_on_coordinates, median_uncertainty_on_angle)
 
 
 
