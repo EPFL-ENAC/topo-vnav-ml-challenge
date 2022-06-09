@@ -126,9 +126,7 @@ def numpy_array_2_csv(path_poses: [str, list], path_out_csv: str, dupose_result_
     else:
         list_path_pose = path_poses
 
-    for i, npy_path_file in enumerate(list_path_pose[:1]):
-
-
+    for i, npy_path_file in enumerate(list_path_pose):
         if dupose_result_folder :
             u_model_translation_file_path = os.path.join(dupose_result_folder,'pred_t_error.npy')
             u_model_translation_value = get_dupose_u_value(u_model_translation_file_path,i)
@@ -138,8 +136,6 @@ def numpy_array_2_csv(path_poses: [str, list], path_out_csv: str, dupose_result_
         else :
             u_model_translation_value = uncertainty_val_translation
             u_model_rotation_value = uncertainty_val_rotation
-
-
 
         npy_data = numpy_loader(npy_path_file)
         coordinates = npy_data[0:3, 3]

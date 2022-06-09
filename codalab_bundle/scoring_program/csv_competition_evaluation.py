@@ -4,6 +4,7 @@ import numpy as np
 import pyproj
 from scipy.spatial.transform import Rotation as R
 import cv2
+import math
 
 
 
@@ -110,7 +111,7 @@ def csc_to_numpy(path_csv_file : str, origin_of_local_coordinate_system_x: float
     numpy_array_result = []
     poses = np.genfromtxt(path_csv_file, delimiter=',')
     for pose in poses :
-        lng, lat, alt, azimuth, tilt, roll = list(pose)
+        lng, lat, alt, azimuth, tilt, roll,u_model_translation_value,u_model_rotation_value = list(pose)
         matrix_angles = get_pose_mat_original_angles([lng, lat, alt, azimuth, tilt, roll])
         global_coordinates = np.array(wgs84_to_ecef(lng,lat,alt))
         local_coordinates =  global_coordinates - origin_xyz
@@ -121,6 +122,22 @@ def csc_to_numpy(path_csv_file : str, origin_of_local_coordinate_system_x: float
     return numpy_array_result
 
 
+def csc_to_u_model(path_csv_file : str):
+
+    """
+    Read U value from the CSV file and transform them into dict
+    :param path_csv_file:
+    :return: dictionnary
+    """
+    u_values = []
+    poses = np.genfromtxt(path_csv_file, delimiter=',')
+    for pose in poses :
+        lng, lat, alt, azimuth, tilt, roll,u_model_translation_value,u_model_rotation_value = list(pose)
+        temp_dict =  {}
+        temp_dict['u_model_translation_value'] = u_model_translation_value
+        temp_dict['u_model_rotation_value'] = u_model_rotation_value
+        u_values.append(temp_dict)
+    return u_values
 
 
 def median_errors(ai_competition_result_file_path,ai_competition_gt_file_path,origin_of_local_coordinate_system_x,
@@ -133,12 +150,16 @@ def median_errors(ai_competition_result_file_path,ai_competition_gt_file_path,or
     ai_competition_gt = csc_to_numpy(ai_competition_gt_file_path, origin_of_local_coordinate_system_x,
                                      origin_of_local_coordinate_system_y, origin_of_local_coordinate_system_z)
 
+    u_values_result = csc_to_u_model(ai_competition_result_file_path)
+    u_values_gt = csc_to_u_model(ai_competition_gt_file_path)
+
 
 
     if len(ai_competition_gt) == len(ai_competition_result) :
 
         list_error_on_coordinates = []
         list_error_on_angles = []
+        list_uncertainty_on_coordinates = []
 
         for i, item in enumerate(ai_competition_result) :
             pose_est_i = ai_competition_result[i]
@@ -151,12 +172,40 @@ def median_errors(ai_competition_result_file_path,ai_competition_gt_file_path,or
             rot_err = np.reshape(np.linalg.norm(rot_err, axis=1), -1) / np.pi * 180.
             rot_err = rot_err[0]
             list_error_on_angles.append(rot_err)
-            # print('rot_err :',rot_err , 'transl_err : ',transl_err)
+
+            u_model_translation_value_gt = u_values_gt[i].get('u_model_translation_value')
+            u_model_translation_value_result = u_values_result[i].get('u_model_translation_value')
+            u_model_rotation_value_gt = u_values_gt[i].get('u_model_rotation_value')
+            u_model_rotation_value_result = u_values_result[i].get('u_model_rotation_value')
+
+            square_root_translation = float(math.sqrt(pow(u_model_translation_value_gt,2) + pow(u_model_translation_value_result,2)))
+            x_model = float(pose_est_i[0, 3])
+            y_model = float(pose_est_i[1, 3])
+            z_model = float(pose_est_i[2, 3])
+            x_val = float(pose_gt_i[0, 3])
+            y_val = float(pose_gt_i[1, 3])
+            z_val = float(pose_gt_i[2, 3])
+
+            enx =  (x_model - x_val) / square_root_translation
+            eny =  (y_model - y_val) / square_root_translation
+            enz =  (z_model - z_val) / square_root_translation
+
+            list_uncertainty_on_coordinates.append(enx)
+            list_uncertainty_on_coordinates.append(eny)
+            list_uncertainty_on_coordinates.append(enz)
+
+
+
+            print('element : ',i,', rot_err :',rot_err , 'transl_err : ',transl_err,',enx : ',enx, ',eny : ',eny, ',enz : ',enz)
 
         median_error_on_coordinates = np.median(list_error_on_coordinates)
         median_error_on_angles = np.median(list_error_on_angles)
+        median_uncertainty_on_coordinates = np.median(list_uncertainty_on_coordinates)
 
-        return median_error_on_coordinates, median_error_on_angles
+        return median_error_on_coordinates, median_error_on_angles, median_uncertainty_on_coordinates
+
+
+
 
 
 def scoring(median_error_on_coordinates, median_error_on_angles) :
@@ -186,20 +235,19 @@ if __name__ == '__main__':
     origin_of_local_coordinate_system_y = 46.5191
     origin_of_local_coordinate_system_z = 390
 
-    ai_competition_result_file_path = 'C:\\projects\\vnav\\CrossLoc\\weight\\est2.csv'
+    ai_competition_result_file_path = 'C:\\projects\\vnav\\CrossLoc\\weight\\est.csv'
     ai_competition_gt_file_path = 'C:\\projects\\vnav\\CrossLoc\\weight\\gt.csv'
 
-    median_errors(ai_competition_result_file_path,
-                  ai_competition_gt_file_path,
-                  origin_of_local_coordinate_system_x,
-                  origin_of_local_coordinate_system_y,
-                  origin_of_local_coordinate_system_z)
 
     median_error_on_coordinates, median_error_on_angles = median_errors(ai_competition_result_file_path,
                                                                         ai_competition_gt_file_path,
                                                                         origin_of_local_coordinate_system_x,
                                                                         origin_of_local_coordinate_system_y,
                                                                         origin_of_local_coordinate_system_z)
+
+
+
+
     score = scoring(median_error_on_coordinates,median_error_on_angles)
 
 
