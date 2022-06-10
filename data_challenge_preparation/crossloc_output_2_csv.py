@@ -1,5 +1,6 @@
 """
-This file reformat the outputs of crossloc into CSV.
+This file reformat the outputs of the "CrossLoc localization" tool into CSV.
+https://github.com/TOPO-EPFL/CrossLoc
 CSV row output format :
 x, y, z, yaw, pitch, roll
 ---
@@ -75,7 +76,7 @@ def pose_2_cvs_arrays(path_poses: [str, list], path_output_file : str):
         npy_data = numpy_loader(npy_path_file)
         coordinates = npy_data[0:3, 3]
         # row_csv_file.append(list(coordinates))
-        lat, lng, alt, x, y, z, azimuth, tilt, roll = extract_angles_from_pose(npy_data)
+        lat, lng, alt, x, y, z, azimuth, tilt, roll ,x_local, y_local, z_local = extract_angles_from_pose(npy_data)
 
         current_row = [lat, lng, alt, azimuth, tilt, roll]
 

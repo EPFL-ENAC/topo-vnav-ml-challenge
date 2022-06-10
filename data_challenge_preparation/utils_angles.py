@@ -102,4 +102,4 @@ def extract_angles_from_pose(pose) -> list:
     # Get the angles
     roll, tilt, azimuth = rotation_matrix_to_euler_angles(mat_rot_pose)
 
-    return lat, lng, alt, x, y, z, azimuth, tilt, roll
+    return lat, lng, alt, x, y, z, azimuth, tilt, roll, x_local, y_local, z_local
