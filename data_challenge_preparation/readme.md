@@ -1,10 +1,24 @@
 # Crossloc challenge set up
 
 
-## Project Page 
+## Introduction
 
-[codolab page](https://codalab.lisn.upsaclay.fr/competitions/5227)
+This repository contains codes to setup a codalab ML competition based on Crossloc inputs and outputs. 
+Crossloc is TOPO project that aims to to localize the aerial images by predicting its scene coordinates, and computing the accurate 6D camera pose.
 
+
+Colalab competion page : [codolab page](https://codalab.lisn.upsaclay.fr/competitions/5227)
+
+Project home page : [here](https://crossloc.github.io/)
+
+
+
+## Scripts 
+* *crossloc_output_2_csv.py* : reformat the outputs of the "CrossLoc localization" tool into CSV.
+* *pose_2_csv.py* : reformat the outputs of the "CrossLoc Benchmark Datasets Setup" tool into the 6D pose CSV (x, y, z, yaw, pitch, roll) format.
+* *csv_2_pose.py* : reformat the 6D pose CSV (x, y, z, yaw, pitch, roll) into the "CrossLoc Benchmark Datasets Setup" format.
+* *utils_angles.py* : matrix operations
+* *utils_reprojection.py* : reprojection operations
 
 ## Data
 The *data_sample* folder contains a light version of the input data that is used in the current process.

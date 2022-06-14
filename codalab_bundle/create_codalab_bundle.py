@@ -5,6 +5,17 @@ import shutil
 current_folder = os.getcwd()
 bundle_file_name = 'bundle.zip'
 
+#Copy code from the working directory to the scoring_program
+folder_out = 'scoring_program'
+folder_in = '../data_challenge_preparation'
+list_of_files = os.listdir(folder_in)
+list_of_file_to_copy = [i for i in list_of_files if i.endswith(('.py','.toml'))]
+for file_name in list_of_file_to_copy :
+    src = os.path.join(folder_in,file_name)
+    dst = os.path.join(folder_out,file_name)
+    shutil.copyfile(src, dst)
+
+
 # zip folders
 folder_to_zip = ['reference_data','scoring_program']
 for folder in folder_to_zip :

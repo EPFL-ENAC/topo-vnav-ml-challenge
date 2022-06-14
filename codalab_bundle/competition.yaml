@@ -2,7 +2,7 @@ title: No GPS, No problem! - test competition
 description: 6D Pose detection for Visual navigation.
 image: logo.jpg
 has_registration: True
-competition_docker_image: regislongchamp/codalab-py3:v4
+competition_docker_image: regislongchamp/codalab-py3:v5
 html:
     overview: overview.html
     evaluation: evaluation.html
