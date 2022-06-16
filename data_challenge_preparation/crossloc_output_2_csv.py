@@ -10,10 +10,11 @@ regis.longchamp@epfl.ch
 """
 
 import os
-import numpy as np
 import zipfile
 import shutil
 import csv
+import numpy as np
+
 
 
 from config import settings
@@ -114,5 +115,3 @@ def format_crossloc_prediction_output() :
 
 if __name__ == '__main__':
     format_crossloc_prediction_output()
-
-

@@ -14,7 +14,7 @@ import numpy as np
 
 from config import settings
 
-def contol_process_csv_pose_transformation() :
+def control_process_csv_pose_transformation() :
     folder_path_poses_init = settings.path_folder_poses_txt 
     poses_init = [os.path.join(folder_path_poses_init,f) for f in listdir(folder_path_poses_init) if isfile(join(folder_path_poses_init, f))]
 
@@ -31,7 +31,7 @@ def contol_process_csv_pose_transformation() :
         list_max_diff.append(max_diff)
 
     overall_max_value = max(list_max_diff)
-    print(overall_max_value)
+    return overall_max_value
 
 if __name__ == '__main__':
-    contol_process_csv_pose_transformation()
+    print(control_process_csv_pose_transformation())

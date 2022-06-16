@@ -6,6 +6,7 @@
 * *utils_reprojection.py* : reprojection operations
 * *evaluate.py* : used by Codalab to score a submission (based on *evaluation.py*)
 * *evaluation.py* : score the submission according to the topo metrics
+* *control_csv_pose_processing.py* : control the pipepline pose -> csv -> pose. 
 
 ## Data
 The *data_sample* folder contains a light version of the input data that is used in the current process.
