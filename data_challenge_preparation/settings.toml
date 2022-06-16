@@ -1,6 +1,6 @@
-origin_of_local_coordinate_system_x_wgs84 = 6.5668
-origin_of_local_coordinate_system_y_wgs84 = 46.5191
-origin_of_local_coordinate_system_z_wgs84 = 390
+origin_of_local_coordinate_system_x_wgs84 = 6.542800000000006
+origin_of_local_coordinate_system_y_wgs84 = 46.535500000000035
+origin_of_local_coordinate_system_z_wgs84 = 439.99999999813735
 
 
 # parameters for crossloc_output_2_csv.py
