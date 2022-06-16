@@ -2,4 +2,4 @@
 *.csv
 */.idea/*
 *.pyc
-*/.vscode/
+*/.vscode/*
