@@ -10,7 +10,7 @@ pose_pred_file_name = 'pose_pred.npy'
 path_file_out_pred = 'C:\\projects\\vnav\\topo-vnav-ml-challenge\\data_challenge_preparation\\data_sample\\output\\pred.csv'
 
 # parameters for pose_2_csv.py and csv_2_pose.py
-path_folder_poses_txt = 'C:\projects\vnav\data\challenge\ready_for_publishing\urbanscape\validation_ground_truth\poses_verification'
+path_folder_poses_txt = 'C:\projects\vnav\data\challenge\ready_for_publishing\urbanscape\validation_ground_truth\drone_val_sim\poses'
 path_file_poses_csv = 'C:\projects\vnav\topo-vnav-ml-challenge\data_challenge_preparation\data_sample\output\gt.csv'
 
 # parameter for evaluation.py
