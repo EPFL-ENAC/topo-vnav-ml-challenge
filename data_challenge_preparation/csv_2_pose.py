@@ -51,4 +51,4 @@ def sixd_csv_array_to_txt_pose():
 
 
 if __name__ == '__main__':
-    print(sixd_csv_array_to_txt_pose())
+    sixd_csv_array_to_txt_pose()
