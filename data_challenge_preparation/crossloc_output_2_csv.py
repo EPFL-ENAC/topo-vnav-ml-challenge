@@ -4,6 +4,8 @@ https://github.com/TOPO-EPFL/CrossLoc
 CSV row output format :
 x, y, z, yaw, pitch, roll
 ---
+Usage : fill the corresponding section in the config file and run this script. 
+---
 regis.longchamp@epfl.ch
 """
 
@@ -59,18 +61,17 @@ def crossloc_output_2_list_poses_paths(file_name: str = 'pose_pred.npy') -> list
 
 def pose_2_cvs_arrays(path_poses: [str, list], path_output_file : str):
     """
-    Convert positions and angles from the pose into WGS84 and ° and write a result csv
+    Convert positions and angles from the pose into WGS84 lat/lng coordinates and ° 
+    Gather all poses into arrays, saved in CSV
     :param path_poses: path or list of paths of the npy pose files
     :return: none
     """
-
     row_csv_file = []
 
     if isinstance(path_poses, str):
         list_path_pose = [path_poses]
     else:
         list_path_pose = path_poses
-
 
     for i, npy_path_file in enumerate(list_path_pose):
         npy_data = numpy_loader(npy_path_file)
@@ -109,8 +110,6 @@ def format_crossloc_prediction_output() :
 
         # Create CSV based on the Crossloc results (previously unzip)
         pose_2_cvs_arrays(list_of_npy_paths, settings.path_file_out_gt)
-
-
 
 
 if __name__ == '__main__':

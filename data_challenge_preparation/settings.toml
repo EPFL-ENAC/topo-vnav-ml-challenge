@@ -1,12 +1,13 @@
 origin_of_local_coordinate_system_x_wgs84 = 6.5668
 origin_of_local_coordinate_system_y_wgs84 = 46.5191
 origin_of_local_coordinate_system_z_wgs84 = 390
-crossloc_pose_result_folder = 'C:\\projects\\vnav\\topo-vnav-ml-challenge\\data_challenge_preparation\\data_sample\\from_crossloc'
+
 
 # parameters for crossloc_output_2_csv.py
-pose_gt_file_name = 'pose_gt.npy'
+crossloc_pose_result_folder = 'C:\\projects\\vnav\\topo-vnav-ml-challenge\\data_challenge_preparation\\data_sample\\from_crossloc'
+pose_gt_file_name = 'pose_gt.npy' # file name of the ground truth numpy files
 path_file_out_gt = 'C:\\projects\\vnav\\topo-vnav-ml-challenge\\data_challenge_preparation\\data_sample\\output\\gt.csv'
-pose_pred_file_name = 'pose_pred.npy'
+pose_pred_file_name = 'pose_pred.npy' # file name of the prediction numpy files
 path_file_out_pred = 'C:\\projects\\vnav\\topo-vnav-ml-challenge\\data_challenge_preparation\\data_sample\\output\\pred.csv'
 
 # parameters for pose_2_csv.py and csv_2_pose.py
