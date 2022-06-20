@@ -40,12 +40,14 @@ def pose_2_cvs_arrays(coordinate_system : str = 'local' ):
 
             lat, lng, alt, x, y, z, azimuth, tilt, roll, x_local, y_local, z_local = pose_2_sixd_array(npy_data)
 
+            picture_name = '{}'.format(i)
+
             if coordinate_system.lower() == 'local' :
-                current_row = [x_local, y_local, z_local, azimuth, tilt, roll]
+                current_row = [picture_name,x_local, y_local, z_local, azimuth, tilt, roll]
             elif coordinate_system.lower() == 'wgs84' :
-                current_row = [lat, lng, alt, azimuth, tilt, roll]
+                current_row = [picture_name,lat, lng, alt, azimuth, tilt, roll]
             elif coordinate_system.lower() == 'ecef':
-                current_row = [x, y, z, azimuth, tilt, roll]
+                current_row = [picture_name,x, y, z, azimuth, tilt, roll]
             else :
                 raise Exception("Only 'local' (default), 'wgs84' or 'ecef' coordinate system can be provided")
 
