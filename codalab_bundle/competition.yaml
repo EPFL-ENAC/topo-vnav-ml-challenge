@@ -1,7 +1,9 @@
-title: No GPS, No problem! - test competition
+title: No GPS no problem! Democratising aerial navigation via robust and data-scalable computer vision.
 description: 6D Pose detection for Visual navigation.
 image: logo.jpg
 has_registration: True
+start_date: 2022-06-20 00:00:00+00:00
+end_date: 2022-12-20 00:00:00+00:00
 competition_docker_image: regislongchamp/codalab-py3:v5
 html:
     overview: overview.html
@@ -12,7 +14,7 @@ phases:
     1:
         phasenumber: 1
         label: "First phase"
-        start_date: 2022-03-30
+        start_date: 2022-06-20
         max_submissions: 100
         scoring_program: scoring_program.zip
         reference_data: reference_data.zip

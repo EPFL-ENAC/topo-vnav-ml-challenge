@@ -69,7 +69,7 @@ def rotation_matrix_to_euler_angles(pose):
 def pose_2_sixd_array(pose) -> list:
     """
     Extract the angle information from the 6d coordinate array
-    return: x,y,z ,azimuth, tilt, roll
+    return: x,y,z,azimuth, tilt, roll
     """
 
     origin_of_local_coordinate_system_x = settings.origin_of_local_coordinate_system_x_wgs84
@@ -118,21 +118,21 @@ def pose_2_sixd_array(pose) -> list:
 
 
 def sixd_array_2_pose(sixd_array, coordinate_system ='wgs84'):
- """
- Transform the 6d ndarray, [lat, lon, h, yaw, pitch, roll] into the 4x4 homogeneous extrinsic camera matrix
- """
- if coordinate_system.lower() == 'wgs84' :
-    lat, lng, alt, yaw, pitch, roll = sixd_array  # no need to do local conversion when in ECEF
- elif coordinate_system.lower() == 'ecef':
-     x, y, z, yaw, pitch, roll = sixd_array
-     lon, lat, alt = ecef_to_wgs84(x, y, z)
+    """
+    Transform the 6d ndarray, [lat, lon, h, yaw, pitch, roll] into the 4x4 homogeneous extrinsic camera matrix
+    """
+    if coordinate_system.lower() == 'wgs84' :
+        lat, lng, alt, yaw, pitch, roll = sixd_array  # no need to do local conversion when in ECEF
+    elif coordinate_system.lower() == 'ecef':
+        x, y, z, yaw, pitch, roll = sixd_array
+        lon, lat, alt = ecef_to_wgs84(x, y, z)
 
- rot_ned_in_ecef = rotation_ned_in_ecef(lng, lat)
- rot_pose_in_ned = R.from_euler('ZYX', [yaw, pitch, roll], degrees=True).as_matrix()
- r = np.matmul(rot_ned_in_ecef, rot_pose_in_ned)
- # transform coordinate system from NED to standard camera sys.
- r = r[0:3, [1, 2, 0]]
- return r
+    rot_ned_in_ecef = rotation_ned_in_ecef(lng, lat)
+    rot_pose_in_ned = R.from_euler('ZYX', [yaw, pitch, roll], degrees=True).as_matrix()
+    r = np.matmul(rot_ned_in_ecef, rot_pose_in_ned)
+    # transform coordinate system from NED to standard camera sys.
+    r = r[0:3, [1, 2, 0]]
+    return r
 
 
 
