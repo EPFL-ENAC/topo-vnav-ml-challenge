@@ -17,8 +17,9 @@ path_file_poses_csv = 'C:\projects\vnav\topo-vnav-ml-challenge\data_challenge_pr
 # parameter for evaluation.py
 path_csv_ground_truth = 'C:\projects\vnav\topo-vnav-ml-challenge\codalab_bundle\reference_data\gt.csv'
 path_csv_estimation = 'C:\projects\vnav\topo-vnav-ml-challenge\data_challenge_preparation\data_sample\output\est.csv'
-u_val_tranlation = 1
-u_val_rotation = 1
+u_val_tranlation = 0.022
+u_val_rotation = 1.15
+u_val_best_x_percent = 10
 uncertainty_on_coordinates_min_range = 0.3
 uncertainty_on_coordinates_max_range = 1
 uncertainty_on_angles_min_range = 0.3

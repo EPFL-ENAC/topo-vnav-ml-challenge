@@ -52,9 +52,6 @@ def check_csv_format(path_csv_estimation, path_csv_ground_truth):
 
 
 
-
-
-
 def sixd_csv_array_to_pose(path_csv_file):
  """
  Read the 6D position from the CSV file and transform them into numpy array
@@ -84,6 +81,54 @@ def sixd_csv_array_to_pose(path_csv_file):
  return numpy_array_result
 
 
+def get_min_uncertainty(path_csv_estimation : str = settings.path_csv_estimation) :
+    ai_competition_result = np.genfromtxt(path_csv_estimation, delimiter=',')
+
+    number_of_row = len(ai_competition_result)
+    number_of_col = min([len(i) for i in ai_competition_result])
+    u_val_best_x_percent = settings.u_val_best_x_percent
+    number_of_best_x_percent = round(number_of_row/100*u_val_best_x_percent)
+    list_of_best_rows = []
+ 
+    list_score_translation = list()
+    list_score_rotation = list()
+    dict_score_overall = dict()
+
+    if number_of_col == 12 :
+        for i,pose in enumerate(ai_competition_result):
+            lng, lat, alt, azimuth_est, tilt_est, roll_est, u_x, u_y, u_z, u_azumith, u_tilt, u_roll = list(pose)
+            mean_uncertainty_translation = statistics.mean([u_x , u_y ,u_z])
+            mean_uncertainty_rotation = statistics.mean([u_azumith , u_tilt ,u_roll])
+            list_score_translation.append((i,mean_uncertainty_translation))
+            list_score_rotation.append((i,mean_uncertainty_rotation))
+
+        list_sorted_score_translation = sorted(list_score_translation, key=lambda x: x[1])
+        dict_sorted_score_translation = dict((x, rank) for rank, (x, y) in enumerate(list_sorted_score_translation))
+
+        list_sorted_score_rotation = sorted(list_score_rotation, key=lambda x: x[1])
+        dict_sorted_score_rotation = dict((x, rank) for rank, (x, y) in enumerate(list_sorted_score_rotation))
+
+        for index, rank_translation in dict_sorted_score_translation.items() :
+            rank_rotation = dict_sorted_score_rotation[index]
+            overall_rank = 0.7*rank_translation + rank_rotation*0.3
+            dict_score_overall[index] = overall_rank
+
+        
+
+        dict_sorted_score_overall = dict(sorted(dict_score_overall.items(), key = lambda x: x[1]))
+        for i, index in enumerate(dict_sorted_score_overall.keys()):
+            if i < number_of_best_x_percent :
+                list_of_best_rows.append(index)
+    
+    if number_of_col == 6 :
+        for i,pose in enumerate(ai_competition_result):
+            list_of_best_rows.append(i)
+
+    print(list_of_best_rows)
+    
+    return list_of_best_rows
+    
+
 
 def median_errors(path_csv_estimation : str = settings.path_csv_estimation,
                   path_csv_ground_truth : str = settings.path_csv_ground_truth):
@@ -91,24 +136,28 @@ def median_errors(path_csv_estimation : str = settings.path_csv_estimation,
     Compute the median error based on criterias defined by the topo labo.
     :return: median  error on coordinates and angles.
     """
+    
+    list_of_best_rows = get_min_uncertainty(path_csv_estimation)
+    
     ai_competition_result = sixd_csv_array_to_pose(path_csv_estimation)
-    ai_competition_gt = sixd_csv_array_to_pose(path_csv_ground_truth)
+    ai_competition_gt = sixd_csv_array_to_pose(path_csv_ground_truth)  
 
     list_error_on_coordinates = []
     list_error_on_angles = []
 
     if len(ai_competition_gt) == len(ai_competition_result) :
         for i, item in enumerate(ai_competition_result):
-            pose_est_i = ai_competition_result[i]
-            pose_gt_i = ai_competition_gt[i]
-            transl_err = np.linalg.norm(pose_gt_i[0:3, 3] - pose_est_i[0:3, 3])
-            list_error_on_coordinates.append(transl_err)
-            rot_err = pose_est_i[0:3, 0:3].T.dot(pose_gt_i[0:3, 0:3])
-            rot_err = cv2.Rodrigues(rot_err)[0]
-            rot_err = np.reshape(rot_err, (1, 3))
-            rot_err = np.reshape(np.linalg.norm(rot_err, axis=1), -1) / np.pi * 180.
-            rot_err = rot_err[0]
-            list_error_on_angles.append(rot_err)
+            if i in list_of_best_rows :
+                pose_est_i = ai_competition_result[i]
+                pose_gt_i = ai_competition_gt[i]
+                transl_err = np.linalg.norm(pose_gt_i[0:3, 3] - pose_est_i[0:3, 3])
+                list_error_on_coordinates.append(transl_err)
+                rot_err = pose_est_i[0:3, 0:3].T.dot(pose_gt_i[0:3, 0:3])
+                rot_err = cv2.Rodrigues(rot_err)[0]
+                rot_err = np.reshape(rot_err, (1, 3))
+                rot_err = np.reshape(np.linalg.norm(rot_err, axis=1), -1) / np.pi * 180.
+                rot_err = rot_err[0]
+                list_error_on_angles.append(rot_err)
 
     median_error_on_coordinates = np.median(list_error_on_coordinates)
     median_error_on_angles = np.median(list_error_on_angles)
@@ -140,18 +189,19 @@ def uncertainty(path_csv_estimation : str = settings.path_csv_estimation,
         lng, lat, alt, azimuth_gt, tilt_gt, roll_gt = list(ai_competition_ground_truth[i])
         [x_gt, y_gt, z_gt] = wgs84_to_ecef(lng, lat, alt)
 
-        en_x = float(x_gt - x_est) / math.sqrt(pow(settings.u_val_tranlation, 2) + pow(u_x, 2))
+        en_x = abs(float(x_gt - x_est) / math.sqrt(pow(settings.u_val_tranlation, 2) + pow(u_x, 2)))
         uncertainty_array_en_x.append(en_x)
-        en_y = float(y_gt - y_est) / math.sqrt(pow(settings.u_val_tranlation, 2) + pow(u_y, 2))
+        en_y = abs(float(y_gt - y_est) / math.sqrt(pow(settings.u_val_tranlation, 2) + pow(u_y, 2)))
         uncertainty_array_en_y.append(en_y)
-        en_z = float(z_gt - z_est) / math.sqrt(pow(settings.u_val_tranlation, 2) + pow(u_z, 2))
+        en_z = abs(float(z_gt - z_est) / math.sqrt(pow(settings.u_val_tranlation, 2) + pow(u_z, 2)))
         uncertainty_array_en_z.append(en_z)
-        en_azimuth = difference_between_angles(azimuth_gt,azimuth_est) / math.sqrt(pow(settings.u_val_rotation, 2) + pow(u_azumith, 2))
+        en_azimuth = abs(difference_between_angles(azimuth_gt,azimuth_est) / math.sqrt(pow(settings.u_val_rotation, 2) + pow(u_azumith, 2)))
         uncertainty_array_en_azimuth.append(en_azimuth)
-        en_tilt = difference_between_angles(tilt_gt, tilt_est) / math.sqrt(pow(settings.u_val_rotation, 2) + pow(u_tilt, 2))
+        en_tilt = abs(difference_between_angles(tilt_gt, tilt_est) / math.sqrt(pow(settings.u_val_rotation, 2) + pow(u_tilt, 2)))
         uncertainty_array_en_tilt.append(en_tilt)
-        en_roll = difference_between_angles(roll_gt, roll_est) / math.sqrt(pow(settings.u_val_rotation, 2) + pow(u_roll, 2))
+        en_roll = abs(difference_between_angles(roll_gt, roll_est) / math.sqrt(pow(settings.u_val_rotation, 2) + pow(u_roll, 2)))
         uncertainty_array_en_roll.append(en_roll)
+
 
     median_uncertainty_en_x = abs(float(np.median(uncertainty_array_en_x)))
     median_uncertainty_en_y = abs(float(np.median(uncertainty_array_en_y)))
