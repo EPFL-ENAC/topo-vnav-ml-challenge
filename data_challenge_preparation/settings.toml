@@ -24,3 +24,5 @@ uncertainty_on_coordinates_min_range = 0.5
 uncertainty_on_coordinates_max_range = 1
 uncertainty_on_angles_min_range = 0.3
 uncertainty_on_angles_max_range = 1
+nbr_col_with_uncertainty = 13
+nbr_col_without_uncertainty = 7

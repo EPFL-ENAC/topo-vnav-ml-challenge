@@ -43,7 +43,7 @@ def check_csv_format(path_csv_estimation, path_csv_ground_truth):
             test_result['succeed'] = False
             test_result['details'].append('The CSV file does not contain enough data. {} line is expected'.format(len(csv_ground_truth)))
 
-        if len(csv_estimation[0]) != 7 and len(csv_estimation[0]) != 13 :
+        if len(csv_estimation[0]) != settings.nbr_col_without_uncertainty and len(csv_estimation[0]) != settings.nbr_col_with_uncertainty :
             test_result['succeed'] = False
             test_result['details'].append(
                 'The CSV file does not contain enough column. {} columns is expected, {} provided'.format(len(csv_ground_truth[0])*2,len(csv_estimation[0])))
@@ -67,7 +67,7 @@ def sixd_csv_array_to_pose(path_csv_file):
 
  numpy_array_result = {}
  for i,pose in enumerate(poses):
-    if len(pose) == 13 : # file submitted by the users (estimation values with 13 columns)
+    if len(pose) == settings.nbr_col_with_uncertainty : # file submitted by the users (estimation values with 13 columns)
         pict_name, lng, lat, alt, azimuth, tilt, roll, u_x, u_y, u_z, u_azimith, u_tilt, u_roll = list(pose)
     else : # file ground truth (only 6d pose)
         pict_name, lng, lat, alt, azimuth, tilt, roll = list(pose)
@@ -83,6 +83,9 @@ def sixd_csv_array_to_pose(path_csv_file):
 
 
 def get_min_uncertainty(path_csv_estimation : str = settings.path_csv_estimation) :
+    """
+    Return a list of the picture IDs that have
+    """
 
     ai_competition_result = np.genfromtxt(path_csv_estimation, delimiter=',')
     number_of_row = len(ai_competition_result)
@@ -95,7 +98,7 @@ def get_min_uncertainty(path_csv_estimation : str = settings.path_csv_estimation
     list_score_rotation = list()
     dict_score_overall = dict()
 
-    if number_of_col == 13 :
+    if number_of_col == settings.nbr_col_with_uncertainty :
         for i,pose in enumerate(ai_competition_result):
             picture_name, lng, lat, alt, azimuth_est, tilt_est, roll_est, u_x, u_y, u_z, u_azumith, u_tilt, u_roll = list(pose)
             mean_uncertainty_translation = statistics.mean([u_x , u_y ,u_z])
@@ -114,14 +117,12 @@ def get_min_uncertainty(path_csv_estimation : str = settings.path_csv_estimation
             overall_rank = 0.7*rank_translation + rank_rotation*0.3
             dict_score_overall[picture_name] = overall_rank
 
-        
-
         dict_sorted_score_overall = dict(sorted(dict_score_overall.items(), key = lambda x: x[1]))
         for i, picture_name in enumerate(dict_sorted_score_overall.keys()):
             if i < number_of_best_x_percent :
                 list_of_best_rows.append(picture_name)
     
-    if number_of_col == 7 :
+    if number_of_col == settings.nbr_col_without_uncertainty :
         for i,pose in enumerate(ai_competition_result):
             picture_name, lng, lat, alt, azimuth_est, tilt_est, roll_est = list(pose)
             list_of_best_rows.append(picture_name)
