@@ -1,6 +1,9 @@
-# Instructions to generate the Codalab bundle 
+Training dataset 
+https://zenodo.org/record/6673844/files/train.zip?download=1
 
-* Add ground truth data (CSV file) into the reference_data folder.
-* Run : ```python create_codalab_bundle.py ``` to create the zip file with the expected structure.
-* Load the zip file into Codalab website. 
+Validation dataset 
+https://zenodo.org/record/6673574/files/validation.zip?download=1
 
+
+Sample submission format 
+https://raw.githubusercontent.com/EPFL-ENAC/topo-vnav-ml-challenge/main/data_challenge_preparation/data_sample/est.csv

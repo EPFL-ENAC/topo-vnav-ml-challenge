@@ -10,14 +10,17 @@ html:
     evaluation: evaluation.html
     terms: terms_and_conditions.html
     data: data.html
+    References: reference.html
 phases:
     1:
         phasenumber: 1
         label: "First phase"
-        start_date: 2022-06-20
+        start_date: 2022-06-21
         max_submissions: 100
         scoring_program: scoring_program.zip
         reference_data: reference_data.zip
+        input_data: input_data.zip
+       
 leaderboard:
     leaderboards:
         RESULTS: &RESULTS

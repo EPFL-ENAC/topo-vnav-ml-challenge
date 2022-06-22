@@ -12,11 +12,11 @@ path_file_out_pred = 'C:\\projects\\vnav\\topo-vnav-ml-challenge\\data_challenge
 
 # parameters for pose_2_csv.py and csv_2_pose.py
 path_folder_poses_txt = 'C:\projects\vnav\data\challenge\ready_for_publishing\urbanscape\validation_ground_truth\drone_val_sim\poses'
-path_file_poses_csv = 'C:\projects\vnav\topo-vnav-ml-challenge\data_challenge_preparation\data_sample\output\gt.csv'
+path_file_poses_csv = 'C:\projects\vnav\topo-vnav-ml-challenge\data_challenge_preparation\data_sample\output\test1\est_no_u.csv'
 
 # parameter for evaluation.py
-path_csv_ground_truth = 'C:\projects\vnav\topo-vnav-ml-challenge\codalab_bundle\reference_data\gt.csv'
-path_csv_estimation = 'C:\projects\vnav\topo-vnav-ml-challenge\data_challenge_preparation\data_sample\output\est_no_u.csv'
+path_csv_ground_truth = 'C:\projects\vnav\topo-vnav-ml-challenge\data_challenge_preparation\data_sample\output\gt.csv'
+path_csv_estimation = 'C:\projects\vnav\topo-vnav-ml-challenge\data_challenge_preparation\data_sample\output\fake_sample\est.csv'
 u_val_tranlation = 0.022
 u_val_rotation = 1.15
 u_val_best_x_percent = 5
@@ -24,3 +24,9 @@ uncertainty_on_coordinates_min_range = 0.5
 uncertainty_on_coordinates_max_range = 1
 uncertainty_on_angles_min_range = 0.3
 uncertainty_on_angles_max_range = 1
+nbr_col_with_uncertainty = 13
+nbr_col_without_uncertainty = 7
+scoring_max_angle = 15
+scoring_max_point = 100
+scoring_ratio_on_coordinate = 0.7
+scoring_ratio_on_error = 0.7

@@ -1,3 +1,641 @@
-<p>
-	Full details  <a href="https://epfl-enac.github.io/topo-ml-competition/" target="_blank">here</a> 
-</p>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+  </head>
+  <body>
+    <h1 dir="ltr" style="line-height:1.38;margin-top:24pt;margin-bottom:6pt;" id="docs-internal-guid-58ea96e6-7fff-839f-9009-a58adfd88fea"><span
+style="font-size:23pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">The Datasets</span></h1>
+    <p>We challenge you to prove your approach can work robustly and in an
+      economically/data scalable way. To do this by proving you can compute
+      accurate 6D camera poses with known uncertainty on our challenge
+      validation dataset. To do this by having only access to:</p>
+    <h1 dir="ltr" style="line-height:1.38;margin-top:24pt;margin-bottom:6pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">The data splits and link to the repositories:</span></h1>
+    <br>
+    <div dir="ltr" style="margin-left:30pt;" align="left">
+      <table style="border:none;border-collapse:collapse;">
+        <colgroup><col width="109"><col width="157"><col width="157"><col width="154"><col
+            width="109"><col width="117"></colgroup>
+        <tbody>
+          <tr style="height:38.842529296875pt">
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;background-color:#d9d9d9;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Link</span></h1>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;background-color:#d9d9d9;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Dataset</span></h1>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;background-color:#d9d9d9;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Description</span></h1>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;background-color:#d9d9d9;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Location</span></h1>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;background-color:#d9d9d9;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Type</span></h1>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;background-color:#d9d9d9;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Number of images</span></h1>
+            </td>
+          </tr>
+          <tr style="height:25.75pt">
+            <td rowspan="2" style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><a
+                  href="https://zenodo.org/record/6673844/files/train.zip?download=1"
+                  style="text-decoration:none;"><span style="font-size:11pt;font-family:Arial;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">train.zip</span></a></h1>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11.5pt;font-family:Arial;color:#1d1c1d;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Training-navigation&nbsp;</span></h1>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">The data was generated using high quality 3D model gathered by topographical survey. The generated images are completed with their 6D poses and matching modalities (such as scene absolute coordinates, z-buffer depth, semantics and more..)</span></p>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">The area is a cubic volume over a village where the “Latin Hyper Cube” efficient sampling technique have been used to generate images.</span></p>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">synthetic</span></h1>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"> 15000</span></h1>
+            </td>
+          </tr>
+          <tr style="height:25.75pt">
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Sim-real Matching pairs</span></h1>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Synthetic and real image pairs taken from similar-looking places but of geographically different locations as an aid with the sim-to-real transfer and uncertainty estimation calibration.</span></p>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.38;margin-top:12pt;margin-bottom:12pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Out-of-place</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">(This way, you can train the model to generalise from sim to real and avoid overfitting the In-place real data.)</span></p>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">synthetic + real&nbsp;</span></h1>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">1197</span></h1>
+            </td>
+          </tr>
+          <tr style="height:25.75pt">
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><a
+                  href="https://zenodo.org/record/6673574" style="text-decoration:none;"><span
+style="font-size:11pt;font-family:Arial;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">validation.zip</span></a></h1>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Validation&nbsp;</span></h1>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Additional real images on which the participants will be ranked.</span></p>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">In-place</span></p>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">real</span></h1>
+            </td>
+            <td style="border-left:solid #808080 0.75pt;border-right:solid #808080 0.75pt;border-bottom:solid #808080 0.75pt;border-top:solid #808080 0.75pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">300</span></h1>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <h1 dir="ltr" style="line-height:1.38;text-align: justify;margin-top:24pt;margin-bottom:6pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><span
+style="border:none;display:inline-block;overflow:hidden;width:546px;height:457px;"><img
+src="https://lh5.googleusercontent.com/rLffbIyALatQrpeAMXENIetdqoH2E1LTh86vy4r7x5R_WPQylKmfuXh1r6x6mX8a-Dzpwr0AaTabyzXljLxs28LuwkNN_5QZsKkt9HHMVIqNsi1Cyxv1Z0i589VAA1MIJvV1Bd9e3ga6vPdcAg"
+style="margin-left:0px;margin-top:0px;" height="457" width="546"></span></span><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;</span></h1>
+    <h1 dir="ltr" style="line-height:1.38;text-align: center;margin-top:24pt;margin-bottom:6pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Visual example of how data is split geographically</span></h1>
+    <br>
+    <h2 dir="ltr" style="line-height:1.38;margin-top:18pt;margin-bottom:6pt;"><span
+style="font-size:16pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Datasets structure</span></h2>
+    <h1 dir="ltr" style="line-height:1.38;margin-top:24pt;margin-bottom:6pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">The folder </span><a
+        href="https://zenodo.org/record/6673844/files/train.zip?download=1" style="text-decoration:none;"><span
+style="font-size:11pt;font-family:Arial;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">train.zip</span></a><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"> contain the following folders :&nbsp;</span></h1>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#212529;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">train.zip/</span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#212529;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474;</span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9500;&#9472;&#9472; train&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;</span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474; &nbsp; &#9500;&#9472;&#9472; rgb_synth&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474; &nbsp; &#9500;&#9472;&#9472; poses&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474; &nbsp; &#9500;&#9472;&#9472; addl_scene_info</span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474; &nbsp; &#9474; &nbsp; &#9500;&#9472;&#9472; calibration&nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp; </span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474; &nbsp; &#9474; &nbsp; &#9500;&#9472;&#9472; depth&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp; </span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474; &nbsp; &#9474; &nbsp; &#9500;&#9472;&#9472; init &nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp; </span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474; &nbsp; &#9474; &nbsp; &#9500;&#9472;&#9472; normal &nbsp; &nbsp; &nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp; </span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474; &nbsp; &#9474; &nbsp; &#9492;&#9472;&#9472; semantics&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9500;&#9472;&#9472; synth_real_matching</span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474; &nbsp; &#9500;&#9472;&#9472; rgb_synth&nbsp; &nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;</span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474; &nbsp; &#9500;&#9472;&#9472; rgb_real &nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;</span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474; &nbsp; &#9500;&#9472;&#9472; poses&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp; </span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474; &nbsp; &#9500;&#9472;&#9472; addl_scene_info</span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474; &nbsp; &#9474; &nbsp; &#9500;&#9472;&#9472; calibration&nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp; </span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474; &nbsp; &#9474; &nbsp; &#9500;&#9472;&#9472; depth&nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp; </span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474; &nbsp; &#9474; &nbsp; &#9500;&#9472;&#9472; init &nbsp; &nbsp; &nbsp; &nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp; </span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474; &nbsp; &#9474; &nbsp; &#9500;&#9472;&#9472; normal &nbsp; &nbsp; &nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp; </span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#0e101a;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&#9474; &nbsp; &#9474; &nbsp; &#9492;&#9472;&#9472; semantics&nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#212529;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp;</span></p>
+    <br>
+    <h1 dir="ltr" style="line-height:1.38;margin-top:24pt;margin-bottom:6pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">The folder </span><a
+        href="https://zenodo.org/record/6673574" style="text-decoration:none;"><span
+style="font-size:11pt;font-family:Arial;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">validation.zip</span></a><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"> contain only&nbsp; rgb_real png images</span></h1>
+    <br>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:'Courier New';color:#212529;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">validation.zip/ </span><span
+style="font-size:11pt;font-family:'Courier New';color:#212529;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp; </span><span
+style="font-size:11pt;font-family:'Courier New';color:#212529;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp; </span></p>
+    <br>
+    <h2 dir="ltr" style="line-height:1.38;margin-top:18pt;margin-bottom:6pt;"><span
+style="font-size:16pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Folder and data description&nbsp;</span></h2>
+    <br>
+    <div dir="ltr" style="margin-left:0pt;" align="center">
+      <table style="border:none;border-collapse:collapse;table-layout:fixed;width:451.27559055118115pt">
+        <colgroup><col><col width="214"></colgroup>
+        <tbody>
+          <tr style="height:26.5462646484375pt">
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#d9d9d9;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.38;margin-top:12pt;margin-bottom:12pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Folder name + content description</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#d9d9d9;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><br>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Exemple&nbsp;</span></p>
+            </td>
+          </tr>
+          <tr style="height:0pt">
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">rgb_synth</span></p>
+              <br>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">synthetics images</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Format : png&nbsp;</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Dimensions : 720 x 480 px</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><span
+style="border:none;display:inline-block;overflow:hidden;width:294px;height:197px;"><img
+src="https://lh3.googleusercontent.com/qa8rlX6g_Ya_uu9j65f7_Ec513hvkaBrPI9_vFq050O-YOzshwfJ-ikWuRCPvoHNTU4KYuuj9uEGr9gr4Vlfcc8jVJA9rchhDt6xLlSQYY7A_jyM0Ecttye1vk3VcI6-AhMxnRl5wumRsTeB8A"
+style="margin-left:0px;margin-top:0px;" height="197" width="294"></span></span></p>
+            </td>
+          </tr>
+          <tr style="height:0pt">
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">rgb_real</span></p>
+              <br>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">real images&nbsp;</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Format : png&nbsp;</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Dimensions : 720 x 480 px</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><span
+style="border:none;display:inline-block;overflow:hidden;width:293px;height:195px;"><img
+src="https://lh6.googleusercontent.com/qPtsNWF3zT-VJSAtWab5r8E0xazPhLTTs59VOfJMNQK4W-VBbVWx9SXAoLc3yQ6aeVeyweLnzCejvxxGQTIoCQU2ViZRBF_ru-e48DaMcgJLaWHhAaQHcDolDlNEakeqyf33NcALtH3fn6AbRg"
+style="margin-left:0px;margin-top:0px;" height="195" width="293"></span></span></p>
+            </td>
+          </tr>
+          <tr style="height:0pt">
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">poses</span></p>
+              <br>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Ground truth matrix 6D position.</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Format : text file</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Where the . represent the element of the 3 rotation matrix of heading-pitch-roll NED in ECEF coordinate system.</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">x,y,z are in the local ECEF coordinate system.</span></p>
+              <p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:12pt;margin-bottom:12pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">This matrix can be transformed in [lat, lon, h, yaw, pitch, roll] using </span><a
+                  href="https://github.com/EPFL-ENAC/topo-vnav-ml-challenge/blob/main/data_challenge_preparation/poses_2_csv.py"
+                  style="text-decoration:none;"><span style="font-size:11pt;font-family:Arial;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">poses_2_csv.py</span></a><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:12pt;margin-bottom:12pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><span
+style="border:none;display:inline-block;overflow:hidden;width:178px;height:184px;"><img
+src="https://lh3.googleusercontent.com/TBmfumms4VkhomaP192afIHFbc_3YmrcwvssJ2gvtCBnwD6VQdGM65XmSA7pWjRf90M1606trfWcTfPEim_KeyYXQ_66jBLDispCrKJ6HTDN6LtDkkZEDIVDGLiUQS_w37cmdGVbvc1z4fyvcA"
+style="margin-left:0px;margin-top:0px;" height="184" width="178"></span></span></p>
+            </td>
+          </tr>
+          <tr style="height:0pt">
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">calibration</span><span
+style="font-size:11pt;font-family:'Courier New';color:#212529;background-color:#f6f6f6;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;</span></p>
+              <p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:12pt;margin-bottom:12pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">focal length</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><br>
+            </td>
+          </tr>
+          <tr style="height:0pt">
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:12pt;margin-bottom:12pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">depth </span><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">:</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">z-buffer depth (computed following [5])</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Format: ??</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Dimensions: ??</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><span
+style="border:none;display:inline-block;overflow:hidden;width:296px;height:193px;"><img
+src="https://lh5.googleusercontent.com/9Xb4cBx1yjo6ZppwIj7wcOs76yysrFcLlTTuSL2vf68sFl9sZdu-aaUQXFRbyE1UJR8vVO7H6PhsJh-PECeOJ_dS4TjtY9pixfWin9PoGIi_qPjwa3nvTd7fYR5pjzzbYHmxus9xV_DKOVrx-A"
+style="margin-left:0px;margin-top:0px;" height="193" width="296"></span></span></p>
+            </td>
+          </tr>
+          <tr style="height:0pt">
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:12pt;margin-bottom:12pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">init&nbsp;</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Format: ??</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Dimensions: ??</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">scene coordinate (XYZ per pixel)</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><span
+style="border:none;display:inline-block;overflow:hidden;width:291px;height:198px;"><img
+src="https://lh3.googleusercontent.com/TvoKBY6Fgb1-rIewt9ZbYFz3WfD3wnWMIZN1SI4wgM_p_3Q2trgEHp3Uk8JkYpw3rejB74-z9J0JTIUAsJGWXkttYIKmTvizYpnI1UB962c8Nh_cq-v1yCWFfmzcdyryLe7IMl_-KLyiG-B2gA"
+style="margin-left:0px;margin-top:0px;" height="198" width="291"></span></span></p>
+            </td>
+          </tr>
+          <tr style="height:0pt">
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:12pt;margin-bottom:12pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">normal</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Format: ??</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Dimensions: ??</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Surface normal is computed using Open3D.</span></p>
+              <p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:12pt;margin-bottom:12pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><span
+style="border:none;display:inline-block;overflow:hidden;width:293px;height:195px;"><img
+src="https://lh6.googleusercontent.com/rPBzH4dXTVyzfojYjOMBkG13EOiNb-YD0gJbc4CEcxCSx4NhiYkCS2IHJT39bkQOhPJbpMexcOxwIICkEnjN8wrWICn8zK511xsy-F9AyX4rAME5I5FUutpF3ZMK5xxBLGVhpcUPzbgvY2AczA"
+style="margin-left:0px;margin-top:0px;" height="195" width="293"></span></span></p>
+            </td>
+          </tr>
+          <tr style="height:0pt">
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:12pt;margin-bottom:12pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">semantics&nbsp;</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Format: ??</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Dimensions: ??</span></p>
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">The semantic labels have seven classes: sky, ground, vegetation, building, water, bridge, and others.</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><span
+style="border:none;display:inline-block;overflow:hidden;width:298px;height:205px;"><img
+src="https://lh3.googleusercontent.com/e3zjznTtibf13FlJOduB5b9CM_rdzZ1fsTFCVT04GwGLH428xn9R83LNbeiwbsjGUeNRHIqrn04WJ1vxRnLr2x1uxkC0sXc8laXzgzKHcnmi0p8SIHFBXUOOqjFXVY0gzUu6m3VCWtX-joo9cg"
+style="margin-left:0px;margin-top:0px;" height="205" width="298"></span></span></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2 dir="ltr" style="line-height:1.38;margin-top:18pt;margin-bottom:6pt;"><span
+style="font-size:16pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Coordinates system (position)</span></h2>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Here is the placement of the local coordinate system :</span></p>
+    <br>
+    <div dir="ltr" style="margin-left:0pt;" align="center">
+      <table style="border:none;border-collapse:collapse;">
+        <colgroup><col width="71"><col width="208"><col width="100"><col width="176"></colgroup>
+        <tbody>
+          <tr style="height:140.25pt">
+            <td style="border-left:solid #ffffff 1pt;border-right:solid #0e101a 1pt;border-bottom:solid #000000 1pt;border-top:solid #ffffff 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><br>
+            </td>
+            <td style="border-left:solid #0e101a 1pt;border-right:solid #0e101a 1pt;border-bottom:solid #0e101a 1pt;border-top:solid #0e101a 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.6285714285714286;text-align: center;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">ECEF</span></p>
+              <p dir="ltr" style="line-height:1.6285714285714286;text-align: center;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;"><a
+                  href="https://epsg.io/4978" style="text-decoration:none;"><span
+style="font-size:11pt;font-family:Arial;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Epsg:4978</span></a><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;</span></p>
+              <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">local reference</span></p>
+            </td>
+            <td style="border-left:solid #0e101a 1pt;border-right:solid #0e101a 1pt;border-bottom:solid #0e101a 1pt;border-top:solid #f6f6f6 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.6285714285714286;text-align: center;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p>
+            </td>
+            <td style="border-left:solid #0e101a 1pt;border-right:solid #0e101a 1pt;border-bottom:solid #0e101a 1pt;border-top:solid #0e101a 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">WGS 84</span></p>
+              <p dir="ltr" style="line-height:1.6285714285714286;text-align: center;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;"><a
+                  href="https://epsg.io/4979" style="text-decoration:none;"><span
+style="font-size:11pt;font-family:Arial;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Epsg:4979</span></a></p>
+              <p dir="ltr" style="line-height:1.38;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">local reference</span></p>
+              <br>
+              <p dir="ltr" style="line-height:1.6285714285714286;text-align: center;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;"><a
+                  href="https://www.oc.nps.edu/oc2902w/coord/llhxyz.htm" style="text-decoration:none;"><span
+style="font-size:11pt;font-family:Arial;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Latitude/Longitude/Height &lt;--&gt; ECEF via J-Script (nps.edu)</span></a></p>
+            </td>
+          </tr>
+          <tr style="height:24.95745849609375pt">
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#d9d9d9;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">X [m]</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #0e101a 1pt;border-bottom:solid #000000 1pt;border-top:solid #0e101a 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.38;text-indent: 36pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11.5pt;font-family:Arial;color:#1d1c1d;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">4366983.403482145</span></p>
+            </td>
+            <td style="border-left:solid #0e101a 1pt;border-right:solid #0e101a 1pt;border-bottom:solid #0e101a 1pt;border-top:solid #0e101a 1pt;vertical-align:top;background-color:#cccccc;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Longitude [deg] E&nbsp;</span></p>
+            </td>
+            <td style="border-left:solid #0e101a 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #0e101a 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">6.542800000000006</span></p>
+            </td>
+          </tr>
+          <tr style="height:0pt">
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#d9d9d9;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Y [m]</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.38;text-indent: 36pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11.5pt;font-family:Arial;color:#1d1c1d;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">500859.6799224778</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #0e101a 1pt;vertical-align:top;background-color:#cccccc;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Latitude [deg] N</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">46.535500000000035</span></p>
+            </td>
+          </tr>
+          <tr style="height:0pt">
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#d9d9d9;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Z [m]</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.38;text-indent: 36pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11.5pt;font-family:Arial;color:#1d1c1d;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">4606715.270014311</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#cccccc;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Height [m]</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">439.99999999813735</span></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <br>
+    <p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">In order to facilitate the dataset processing, all coordinates (expressed in ECEF coordinates system) of the provided datasets have been reduced by subtracting all from a reference amount (ECEF column 1&nbsp; above- “local reference”).</span></p>
+    <br>
+    <p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Below, an example with current image position is shown in ECEF with the corresponding “relative/reduced” coordinate with respect to local reference. In the final column one can see the corresponding WGS 84 coordinates for the “current position”.&nbsp; All final submission of results must be provided in WGS 84 format for final marking.</span></p>
+    <br>
+    <br>
+    <br>
+    <div dir="ltr" style="margin-left:0pt;" align="center">
+      <table style="border:none;border-collapse:collapse;">
+        <colgroup><col width="71"><col width="208"><col width="140"><col width="100"><col
+            width="135"></colgroup>
+        <tbody>
+          <tr style="height:139.54624720982144pt">
+            <td style="border-left:solid #ffffff 1pt;border-right:solid #0e101a 1pt;border-bottom:solid #000000 1pt;border-top:solid #ffffff 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><br>
+            </td>
+            <td style="border-left:solid #0e101a 1pt;border-right:solid #0e101a 1pt;border-bottom:solid #0e101a 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.6285714285714286;text-align: center;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">ECEF</span></p>
+              <p dir="ltr" style="line-height:1.6285714285714286;text-align: center;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;"><a
+                  href="https://epsg.io/4978" style="text-decoration:none;"><span
+style="font-size:11pt;font-family:Arial;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Epsg:4978</span></a><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;</span></p>
+              <p dir="ltr" style="line-height:1.6285714285714286;text-align: center;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">current position</span></p>
+            </td>
+            <td style="border-left:solid #0e101a 1pt;border-right:solid #0e101a 1pt;border-bottom:solid #0e101a 1pt;border-top:solid #0e101a 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.6285714285714286;text-align: center;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">ECEF</span></p>
+              <p dir="ltr" style="line-height:1.6285714285714286;text-align: center;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;"><a
+                  href="https://epsg.io/4978" style="text-decoration:none;"><span
+style="font-size:11pt;font-family:Arial;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Epsg:4978</span></a><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp; </span><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">relative/reduced</span><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"> position W.R. to local ref.</span></p>
+              <p dir="ltr" style="line-height:1.6285714285714286;text-align: center;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">&nbsp;as provided in dataset/metadata</span></p>
+            </td>
+            <td style="border-left:solid #0e101a 1pt;border-right:solid #0e101a 1pt;border-bottom:solid #0e101a 1pt;border-top:solid #f6f6f6 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.6285714285714286;text-align: center;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p>
+            </td>
+            <td style="border-left:solid #0e101a 1pt;border-right:solid #0e101a 1pt;border-bottom:solid #0e101a 1pt;border-top:solid #0e101a 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">WGS 84</span></p>
+              <p dir="ltr" style="line-height:1.6285714285714286;text-align: center;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">current position</span></p>
+              <p dir="ltr" style="line-height:1.6285714285714286;text-align: center;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;"><a
+                  href="https://epsg.io/4979" style="text-decoration:none;"><span
+style="font-size:11pt;font-family:Arial;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">epsg:4979</span></a></p>
+              <br>
+              <p dir="ltr" style="line-height:1.6285714285714286;text-align: center;background-color:#ffffff;margin-top:0pt;margin-bottom:0pt;"><a
+                  href="https://www.oc.nps.edu/oc2902w/coord/llhxyz.htm" style="text-decoration:none;"><span
+style="font-size:11pt;font-family:Arial;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Latitude/Longitude/Height &lt;--&gt; ECEF via J-Script (nps.edu)</span></a></p>
+            </td>
+          </tr>
+          <tr style="height:24.95745849609375pt">
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#cccccc;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">X [m]</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #0e101a 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.38;text-indent: 36pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11.5pt;font-family:Arial;color:#1d1c1d;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">4366993.403482145</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #0e101a 1pt;border-bottom:solid #000000 1pt;border-top:solid #0e101a 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">10</span></p>
+            </td>
+            <td style="border-left:solid #0e101a 1pt;border-right:solid #0e101a 1pt;border-bottom:solid #0e101a 1pt;border-top:solid #0e101a 1pt;vertical-align:top;background-color:#cccccc;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Longitude [deg] E&nbsp;</span></p>
+            </td>
+            <td style="border-left:solid #0e101a 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #0e101a 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">6.54304</span></p>
+            </td>
+          </tr>
+          <tr style="height:0pt">
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#cccccc;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Y [m]</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.38;text-indent: 36pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11.5pt;font-family:Arial;color:#1d1c1d;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">500879.6799224778</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">20</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #0e101a 1pt;vertical-align:top;background-color:#cccccc;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Latitude [deg] N</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">46.53561</span></p>
+            </td>
+          </tr>
+          <tr style="height:0pt">
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#cccccc;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Z [m]</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.38;text-indent: 36pt;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11.5pt;font-family:Arial;color:#1d1c1d;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">4606745.270014311</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">30</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#cccccc;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Height [m]</span></p>
+            </td>
+            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+              <p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">470.2</span></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <p dir="ltr" style="line-height:1.38;text-align: justify;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Conversion tool can be found here : </span><a
+        href="https://github.com/EPFL-ENAC/topo-vnav-ml-challenge/blob/main/data_challenge_preparation/poses_2_csv.py"
+        style="text-decoration:none;"><span style="font-size:11pt;font-family:Arial;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">poses_2_csv.py</span></a><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"> and </span><a
+        href="https://github.com/EPFL-ENAC/topo-vnav-ml-challenge/blob/main/data_challenge_preparation/poses_2_csv.py"
+        style="text-decoration:none;"><span style="font-size:11pt;font-family:Arial;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:underline;-webkit-text-decoration-skip:none;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">poses_2_csv.py</span></a></p>
+    <br>
+    <h2 dir="ltr" style="line-height:1.38;margin-top:18pt;margin-bottom:6pt;"><span
+style="font-size:16pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Coordinates system (orientation)</span></h2>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Below you can see an example of the orientation reference coordinate system. North being the reference for Yaw and horizontal for Pitch and Roll.</span></p>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+style="font-size:11pt;font-family:Arial;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"><span
+style="border:none;display:inline-block;overflow:hidden;width:634px;height:445px;"><img
+src="https://lh6.googleusercontent.com/FSnDj5vb1l2siuJ1eig-80cAHQq4JqvqHvC3SEOBdHCCzca7vLeZx7S-pGR2BssTh90leetAcfljDfV1SuUqSAx-7CYbs7XHIYjSzj23kuBw59GPif4KJVZLmQzOU-cFivhP83r8iKuVJb6T7g"
+style="margin-left:0px;margin-top:0px;" height="445" width="634"></span></span></p>
+    <br>
+  </body>
+</html>

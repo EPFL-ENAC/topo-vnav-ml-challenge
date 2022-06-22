@@ -35,7 +35,7 @@ if os.path.isdir(submit_dir) and os.path.isdir(truth_dir):
 
     # write evaluation
     if score.get('formatting').get('succeed') :
-        output_file.write("correct:%s"%score.get('score_error'))
+        output_file.write("correct:%s"%score.get('score_overall'))
     else :
         output_file.write("correct:0")
     html = json.dumps(score)
