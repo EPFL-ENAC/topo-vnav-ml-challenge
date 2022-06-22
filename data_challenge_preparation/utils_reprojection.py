@@ -1,11 +1,11 @@
 import pyproj
 
 
-def ecef_to_wgs84(y, x, z):
+def ecef_to_wgs84(x, y, z):
  """
  Reproject ECDF coordinate into lat/lng WGS84 coordinates
  """
- lat, lon, alt = pyproj.Transformer.from_crs("epsg:4978", "epsg:4979").transform(y, x, z)
+ lat, lon, alt = pyproj.Transformer.from_crs("epsg:4978", "epsg:4979").transform(x, y, z)
  return [lon, lat, alt]
 
 

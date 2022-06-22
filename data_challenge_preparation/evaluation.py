@@ -12,7 +12,8 @@ import statistics
 import logging
 
 from config import settings
-from utils_angles import wgs84_to_ecef,sixd_array_2_pose,difference_between_angles
+from utils_angles import sixd_array_2_pose,difference_between_angles
+from utils_reprojection import ecef_to_wgs84,wgs84_to_ecef
 import json
 
 
@@ -188,13 +189,13 @@ def uncertainty(path_csv_estimation : str = settings.path_csv_estimation,
         picture_name, lng, lat, alt, azimuth_gt, tilt_gt, roll_gt = i
         dict_ai_competition_ground_truth[int(picture_name)] = [lng, lat, alt, azimuth_gt, tilt_gt, roll_gt]
 
+
     if len(ai_competition_result[0]) == 13 :
         for i,pose in enumerate(ai_competition_result):
             picture_name_est, lng, lat, alt, azimuth_est, tilt_est, roll_est, u_x, u_y, u_z, u_azumith, u_tilt, u_roll = list(pose)
-            [x_est,y_est,z_est] = wgs84_to_ecef(lng, lat, alt)
-
+            [x_est,y_est,z_est] = wgs84_to_ecef(lat,lng, alt)
             lng, lat, alt, azimuth_gt, tilt_gt, roll_gt = dict_ai_competition_ground_truth.get(int(picture_name_est))
-            [x_gt, y_gt, z_gt] = wgs84_to_ecef(lng, lat, alt)
+            [x_gt, y_gt, z_gt] = wgs84_to_ecef(lat, lng, alt)
             en_x = abs(float(x_gt - x_est) / math.sqrt(pow(settings.u_val_tranlation, 2) + pow(u_x, 2)))
             uncertainty_array_en_x.append(en_x)
             en_y = abs(float(y_gt - y_est) / math.sqrt(pow(settings.u_val_tranlation, 2) + pow(u_y, 2)))
@@ -206,6 +207,7 @@ def uncertainty(path_csv_estimation : str = settings.path_csv_estimation,
             en_tilt = abs(difference_between_angles(tilt_gt, tilt_est) / math.sqrt(pow(settings.u_val_rotation, 2) + pow(u_tilt, 2)))
             uncertainty_array_en_tilt.append(en_tilt)
             en_roll = abs(difference_between_angles(roll_gt, roll_est) / math.sqrt(pow(settings.u_val_rotation, 2) + pow(u_roll, 2)))
+
             uncertainty_array_en_roll.append(en_roll)
 
 
@@ -219,6 +221,7 @@ def uncertainty(path_csv_estimation : str = settings.path_csv_estimation,
 
         mean_translation = statistics.mean([median_uncertainty_en_x , median_uncertainty_en_y ,median_uncertainty_en_z])
         mean_rotation = statistics.mean([median_uncertainty_en_azimuth , median_uncertainty_en_tilt ,median_uncertainty_en_roll])
+
     
     else :
         mean_translation = None
@@ -247,38 +250,27 @@ def scoring(path_csv_estimation : str = settings.path_csv_estimation,
         median_error_on_coordinates, median_error_on_angles = median_errors(path_csv_estimation,path_csv_ground_truth)
         uncertainty_on_coordinates, uncertainty_on_angles = uncertainty(path_csv_estimation,path_csv_ground_truth)
 
-        if median_error_on_coordinates == 0 :
-            score_on_coordinates = 100
-        elif median_error_on_coordinates >= 100 :
-            score_on_coordinates = 0
-        else :
-            score_on_coordinates = 100 - median_error_on_coordinates
-
-        if median_error_on_angles == 0 :
-            score_on_angle = 100
-        elif median_error_on_angles >= 180 :
-            score_on_angle = 0
-        else :
-            score_on_angle = (180 - median_error_on_angles) / 180*100
+        score_on_coordinates = settings.scoring_max_point - min(settings.scoring_max_point,median_error_on_coordinates)
+        score_on_angle = (settings.scoring_max_angle - min(settings.scoring_max_angle,median_error_on_angles))/ settings.scoring_max_angle*settings.scoring_max_point
 
         if uncertainty_on_coordinates and uncertainty_on_coordinates > settings.uncertainty_on_coordinates_min_range  \
                 and uncertainty_on_coordinates < settings.uncertainty_on_coordinates_max_range :
-            score_u_on_coordinates = 100
+            score_u_on_coordinates = settings.scoring_max_point
         else :
             score_u_on_coordinates = 0
 
         if uncertainty_on_angles and uncertainty_on_angles > settings.uncertainty_on_angles_min_range  \
                 and uncertainty_on_angles < settings.uncertainty_on_angles_max_range :
-            score_u_on_angles = 100
+            score_u_on_angles = settings.scoring_max_point
         else :
             score_u_on_angles = 0
 
 
-        score_error = score_on_coordinates * 0.7 + score_on_angle * 0.3
+        score_error = score_on_coordinates * settings.scoring_ratio_on_coordinate + score_on_angle * (1-settings.scoring_ratio_on_coordinate)
         result['score_error'] = score_error
-        score_uncertainty = score_u_on_coordinates * 0.7 +  score_u_on_angles * 0.3
+        score_uncertainty = score_u_on_coordinates * settings.scoring_ratio_on_coordinate +  score_u_on_angles * (1-settings.scoring_ratio_on_coordinate)
         result['score_uncertainty'] = score_uncertainty
-        score_overall = round(score_error * 0.7 + score_uncertainty * 0.3,3)
+        score_overall = round(score_error * settings.scoring_ratio_on_error + score_uncertainty * (1-settings.scoring_ratio_on_error),3)
         result['score_overall'] = score_overall
         result['median_error_on_coordinates'] = median_error_on_coordinates
         result['median_error_on_angles'] = median_error_on_angles
@@ -287,7 +279,7 @@ def scoring(path_csv_estimation : str = settings.path_csv_estimation,
 
 
     else :
-        result['score_error'] = 0
+        result['score_overall'] = 0
         logging.error('CSV formatting issue')
         logging.error('{}'.format(json.dumps(csv_formating_status)))
         logging.error('path_csv_estimation : {}'.format(json.dumps(path_csv_estimation)))
