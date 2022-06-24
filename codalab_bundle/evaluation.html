@@ -1,120 +1,63 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>evaluation</title>
-  </head>
-  <body>
-    <h1>Submission</h1>
-    <h2>Format</h2>
-    <p><br>
-      To submit your results to the leaderboard you must construct a submission
-      zip file containing an est.csv (see also <a href="https://github.com/EPFL-ENAC/topo-vnav-ml-challenge/blob/b2aff2917b262a211bae12eef8154b3164bbad38/data_challenge_preparation/data_sample/est.csv">sample
-        file</a>) file that must have the following columns (without headers):</p>
-    <ul>
-      <li>Column 0 : name of the corresponding image eg. if image name : 24.png
-        → 24</li>
-      <li>Column 1 : estimate X coordinate (longitude) [deg]&nbsp;&nbsp; </li>
-      <li>Column 2 : estimate Y coordinate (latitude) [deg]</li>
-      <li>Column 3 : estimate Altitude [metres]</li>
-      <li>Column 4 : estimate Azimuth [deg]</li>
-      <li>Column 5 : estimate Tilt [deg]</li>
-      <li>&nbsp;Column 6 : estimate Roll [deg]</li>
-      <li>Column 7 : uncertainty X coordinate (longitude) [deg],&nbsp;</li>
-      <li>Column 8 : uncertainty&nbsp; Y coordinate (latitude) [deg],&nbsp;</li>
-      <li>Column 9 : uncertainty Altitude [metres],&nbsp;</li>
-      <li>Column 10 : uncertainty Azimuth [deg]</li>
-      <li>Column 11 : uncertainty Tilt [deg]</li>
-      <li>Column 12 : uncertainty Roll [deg]</li>
-    </ul>
-    <p><br>
-      Notes :</p>
-    <ol>
-      <li>Uncertainty: 1 sigma - standard_uncertainty ([3])</li>
-      <li>&nbsp;Position: Coordinates are in WGS84 coordinate system and height
-        in [metres].</li>
-    </ol>
-    <p><br>
-      <br>
-    </p>
-    <h2>Evaluation Criterias</h2>
-    <p><br>
-      The overall scoring is based on:</p>
-    <ul>
-      <li>Accuracy on positioning (70%), both on coordinates (49%) (translation
-        error) and angles (21%) (rotation error). Accuracy is calculated on a
-        subset of the data set, which is:</li>
-      <ul>
-        <li>&nbsp;the whole dataset if no uncertainty is provided,&nbsp;</li>
-        <li>or the best 5% images uncertainty-wize. If uncertainty is provided
-          (columns 7-12 in submission csv), competitors will be judged only on
-          the median of their lowest uncertainty (not error!) 5% images.</li>
-      </ul>
-    </ul>
-    <ul>
-      <li>Providing a meaningful uncertainty statement (30%), both on
-        coordinates (21%) and angles (9%)</li>
-      <ul>
-        <li>&nbsp;If mean of median uncertainties is between 0.5 and 1, score is
-          100 points;</li>
-        <li>if no uncertainty is provided (columns 7-12 empty) or if the
-          uncertain is outside the 0.5-1 range, score for this part is 0.</li>
-      </ul>
-    </ul>
-    <p><br>
-      The following table sum up this criterias : </p>
-    <p><img alt="" src="https://lh4.googleusercontent.com/V7BCDtalT1buC9GTLpKtdAcW7VXZ4IMwSFJz659zzNR45Jzro2Cpw5_iU50kTaYVT4zskCIwwJvm0f6f2pu0McCtQ8X0A8gWujoslLjssAr6weeax--vKWSVYPC9HNDiKUuqbOaGBmbf5e69Mw"
-        style="margin-left: 0px; margin-top: 0px;" height="517" width="683"></p>
-    <p>Full scoring pipeline can be found <a href="https://github.com/EPFL-ENAC/topo-vnav-ml-challenge/blob/main/data_challenge_preparation/evaluation.py">here</a>.
-      <br>
-      <br>
-      We want to encourage accurate estimation of uncertainty!<br>
-      <br>
-      Thus if an accurate uncertainty statement is provided coordinate median
-      accuracy can be very high even with only a small % accurately regressed
-      images. Even a small amount of accurate guesses - 5% is considered
-      acceptable for absolute pose update part of navigation filter/system.
-      Absolute position update are required only in relatively low frequency
-      (considering good dead reckoning scheme is present).<br>
-      <br>
-      &nbsp;<br>
-      Explanation for the calculation of the En value (Uncertainty quality
-      metric) [4]<br>
-      <br>
-      An Uncertain statement is useful if :</p>
-    <ul>
-      <li>&nbsp;it can help one filter systematically images below a certain
-        error threshold</li>
-      <li>Capture within it the actual magnitude of the errors without
-        significantly overestimating</li>
-    </ul>
-    <p><br>
-      Criteria for uncertainty statement ? An evaluation parameter inspired by
-      the coordinate metrology standards - [4]</p>
-    <p><img alt="" src="https://lh3.googleusercontent.com/aQLvmW6-_7JZY32bHGqsAunD6I2pT3p1Rxqub0Z0pKjf4ZR0XlkGysYwc_aC1hnckG7675lY38m1XzFYpZ3MFTaLPSmn7P1B4JgXAoD6zP38fR1F4eIWJIno_g9zcFBgASXh2TE1_UEJSQ58dw"
-        style="margin-left: 0px; margin-top: 0px;" height="209" width="264"></p>
-    <p><br>
-      Where for each single estimation of each pose En value should be estimated</p>
-    <p><img alt="" src="https://lh5.googleusercontent.com/Sp1f4OgDHqgciXRJPJJVRm7CKj91BRRt6-pZ8QWzPYQ_PFw67BDwib6XORUEJo2cgMSFg2WboKiw2udrGIujivvcmiSXsq2RB1r2mnH6fFHPuJZBcFPEH-7yFdgKhKqG67ktlMHYekc7my2foQ"
-        style="margin-left: 0px; margin-top: 0px;" height="43" width="209"></p>
-    <p><br>
-      With : </p>
-    <ul>
-      <li>Ymodel applied = Prediction (Neural Network)</li>
-      <li>Yval = Reference (ground truth)</li>
-      <li>Uval = Uncertainty of reference (RTK GNSS fusion)&nbsp;&nbsp;</li>
-      <ul>
-        <li>= 2.2 cm – 1 sigma&nbsp;&nbsp;</li>
-        <li>= 1.15 deg – 1 sigma</li>
-      </ul>
-      <li>&nbsp;Umodel applied = Uncertainty of Neural Network – 1 sigma</li>
-    </ul>
-    <p><br>
-      Once En value is calculated for each pose/uncertainty pairs a median of
-      those values is taken for each Degree of freedom. The final En value is
-      then calculated. It can be used to judge the overall pose uncertainty
-      quality. If En is in the 0.5 to 1 range, it will be considered useful
-      (points gained). The provided range is given as such to ensure U captures
-      errors without unnecessarily enlarging the Uncertainty bounds.</p>
-  </body>
-</html>
+<h1>Submission</h1>
+<h2>Format</h2>
+<p><br /> To submit your results to the leaderboard you must construct a submission zip file containing an est.csv (see also <a href="https://github.com/EPFL-ENAC/topo-vnav-ml-challenge/blob/b2aff2917b262a211bae12eef8154b3164bbad38/data_challenge_preparation/data_sample/est.csv">sample file</a>) file that must have the following columns (without headers):</p>
+<ul>
+<li>Column 0 : name of the corresponding image eg. if image name : 24.png &rarr; 24</li>
+<li>Column 1 : estimate X coordinate (longitude) [deg]&nbsp;&nbsp;</li>
+<li>Column 2 : estimate Y coordinate (latitude) [deg]</li>
+<li>Column 3 : estimate Altitude [metres]</li>
+<li>Column 4 : estimate Azimuth [deg]</li>
+<li>Column 5 : estimate Tilt [deg]</li>
+<li>&nbsp;Column 6 : estimate Roll [deg]</li>
+<li>Column 7 : uncertainty X coordinate (longitude) [deg],&nbsp;</li>
+<li>Column 8 : uncertainty&nbsp; Y coordinate (latitude) [deg],&nbsp;</li>
+<li>Column 9 : uncertainty Altitude [metres],&nbsp;</li>
+<li>Column 10 : uncertainty Azimuth [deg]</li>
+<li>Column 11 : uncertainty Tilt [deg]</li>
+<li>Column 12 : uncertainty Roll [deg]</li>
+</ul>
+<p><br /> Notes :</p>
+<ol>
+<li>Uncertainty: 1 sigma - standard_uncertainty ([3])</li>
+<li>&nbsp;Position: Coordinates are in WGS84 coordinate system and height in [metres].</li>
+</ol>
+<p>&nbsp;</p>
+<h2>Evaluation Criterias</h2>
+<p><br /> The overall scoring is based on:</p>
+<ul>
+<li>Accuracy on positioning (70%), both on coordinates (49%) (translation error) and angles (21%) (rotation error). Accuracy is calculated on a subset of the data set, which is:</li>
+<ul>
+<li>&nbsp;the whole dataset if no uncertainty is provided,&nbsp;</li>
+<li>or the best 5% images uncertainty-wize. If uncertainty is provided (columns 7-12 in submission csv), competitors will be judged only on the median of their lowest uncertainty (not error!) 5% images.</li>
+</ul>
+</ul>
+<ul>
+<li>Providing a meaningful uncertainty statement (30%), both on coordinates (21%) and angles (9%)</li>
+<ul>
+<li>&nbsp;If mean of median uncertainties is between 0.5 and 1, score is 100 points;</li>
+<li>if no uncertainty is provided (columns 7-12 empty) or if the uncertain is outside the 0.5-1 range, score for this part is 0.</li>
+</ul>
+</ul>
+<p><br /> The following table sum up this criterias :</p>
+<p><img style="margin-left: 0px; margin-top: 0px;" src="https://lh4.googleusercontent.com/V7BCDtalT1buC9GTLpKtdAcW7VXZ4IMwSFJz659zzNR45Jzro2Cpw5_iU50kTaYVT4zskCIwwJvm0f6f2pu0McCtQ8X0A8gWujoslLjssAr6weeax--vKWSVYPC9HNDiKUuqbOaGBmbf5e69Mw" alt="" width="683" height="517" /></p>
+<p>Full scoring pipeline can be found <a href="https://github.com/EPFL-ENAC/topo-vnav-ml-challenge/blob/main/data_challenge_preparation/evaluation.py">here</a>. <br /> <br /> We want to encourage accurate estimation of uncertainty!<br /> <br /> Thus if an accurate uncertainty statement is provided coordinate median accuracy can be very high even with only a small % accurately regressed images. Even a small amount of accurate guesses - 5% is considered acceptable for absolute pose update part of navigation filter/system. Absolute position update are required only in relatively low frequency (considering good dead reckoning scheme is present).<br /> <br /> &nbsp;<br /> Explanation for the calculation of the En value (Uncertainty quality metric) [4]<br /> <br /> An Uncertain statement is useful if :</p>
+<ul>
+<li>&nbsp;it can help one filter systematically images below a certain error threshold</li>
+<li>Capture within it the actual magnitude of the errors without significantly overestimating</li>
+</ul>
+<p><br /> Criteria for uncertainty statement ? An evaluation parameter inspired by the coordinate metrology standards - [4]</p>
+<p><img style="margin-left: 0px; margin-top: 0px;" src="https://lh3.googleusercontent.com/aQLvmW6-_7JZY32bHGqsAunD6I2pT3p1Rxqub0Z0pKjf4ZR0XlkGysYwc_aC1hnckG7675lY38m1XzFYpZ3MFTaLPSmn7P1B4JgXAoD6zP38fR1F4eIWJIno_g9zcFBgASXh2TE1_UEJSQ58dw" alt="" width="264" height="209" /></p>
+<p><br /> Where for each single estimation of each pose En value should be estimated</p>
+<p><img style="margin-left: 0px; margin-top: 0px;" src="https://lh5.googleusercontent.com/Sp1f4OgDHqgciXRJPJJVRm7CKj91BRRt6-pZ8QWzPYQ_PFw67BDwib6XORUEJo2cgMSFg2WboKiw2udrGIujivvcmiSXsq2RB1r2mnH6fFHPuJZBcFPEH-7yFdgKhKqG67ktlMHYekc7my2foQ" alt="" width="209" height="43" /></p>
+<p><br /> With :</p>
+<ul>
+<li>Ymodel applied = Prediction (Neural Network)</li>
+<li>Yval = Reference (ground truth)</li>
+<li>Uval = Uncertainty of reference (RTK GNSS fusion)&nbsp;&nbsp;</li>
+<ul>
+<li>= 2.2 cm &ndash; 1 sigma&nbsp;&nbsp;</li>
+<li>= 1.15 deg &ndash; 1 sigma</li>
+</ul>
+<li>&nbsp;Umodel applied = Uncertainty of Neural Network &ndash; 1 sigma</li>
+</ul>
+<p><br /> Once En value is calculated for each pose/uncertainty pairs a median of those values is taken for each Degree of freedom. The final En value is then calculated. It can be used to judge the overall pose uncertainty quality. If En is in the 0.5 to 1 range, it will be considered useful (points gained). The provided range is given as such to ensure U captures errors without unnecessarily enlarging the Uncertainty bounds.</p>
