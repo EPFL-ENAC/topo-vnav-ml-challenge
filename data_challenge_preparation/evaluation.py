@@ -19,17 +19,18 @@ import json
 
 def check_csv_format(path_csv_estimation, path_csv_ground_truth):
     """
-    Analyse the CSV provided to verify its structures
-    :param path_csv_estimation:
-    :param path_csv_ground_truth:
-    :return:
+    Analyse the  provided CSV to verify its structures (number of columns, format)
+    :param path_csv_estimation: path of the estimation CSV file  
+    :param path_csv_ground_truth: path of the groundtruth CSV file 
+    :return: dictionary containing succeed = True or False
+    :rtype: dict
     """
 
     test_result = {}
     test_result['succeed'] = True
     test_result['details'] = []
 
-    # test 1
+    # test 1 : csv format
     try :
         csv_estimation = np.genfromtxt(path_csv_estimation, delimiter=',')
         csv_ground_truth = np.genfromtxt(path_csv_ground_truth, delimiter=',')
@@ -37,7 +38,7 @@ def check_csv_format(path_csv_estimation, path_csv_ground_truth):
         test_result['succeed'] = False
         test_result['details'].append('CSV file has not been loaded')
 
-    
+    # test 2 : number of columns 
     if test_result.get('succeed') :
         # test 2
         if len(csv_estimation) != len(csv_ground_truth) :
@@ -56,8 +57,8 @@ def check_csv_format(path_csv_estimation, path_csv_ground_truth):
 def sixd_csv_array_to_pose(path_csv_file):
  """
  Read the 6D position from the CSV file and transform them into numpy array
- :param path_csv_file:
- :return:  dict numpy's array with key = pictures name
+ :param path_csv_file: path of the CSV file
+ :return:  dictionary :  key = pictures name - value = numpy's array with 4x4 homogeneous extrinsic camera matrix
  """
 
  origin_xyz = np.array(wgs84_to_ecef(settings.origin_of_local_coordinate_system_x_wgs84,
@@ -85,49 +86,54 @@ def sixd_csv_array_to_pose(path_csv_file):
 
 def get_min_uncertainty(path_csv_estimation : str = settings.path_csv_estimation) :
     """
-    Return a list of the picture IDs that have
+    Return a list of the X best picture IDs (pictures names) regarding the uncertainty.
+    X depends on the paramter u_val_best_x_percent
+    :param path_csv_estimation: path of the estimation CSV file  
+    :return: list containing the picture IDs
     """
 
     ai_competition_result = np.genfromtxt(path_csv_estimation, delimiter=',')
-    number_of_row = len(ai_competition_result)
     number_of_col = min([len(i) for i in ai_competition_result])
-    u_val_best_x_percent = settings.u_val_best_x_percent
-    number_of_best_x_percent = round(number_of_row/100*u_val_best_x_percent)
-    list_of_best_rows = []
+    
+    # Define the number of picture
+    number_of_row = len(ai_competition_result)
+    number_of_best_x_percent = round(number_of_row/100*settings.u_val_best_x_percent)
  
     list_score_translation = list()
     list_score_rotation = list()
     dict_score_overall = dict()
 
-    if number_of_col == settings.nbr_col_with_uncertainty :
+    if number_of_col == settings.nbr_col_with_uncertainty : # if the CSV provided contains uncertainty columns
         for i,pose in enumerate(ai_competition_result):
-            picture_name, lng, lat, alt, azimuth_est, tilt_est, roll_est, u_x, u_y, u_z, u_azumith, u_tilt, u_roll = list(pose)
-            mean_uncertainty_translation = statistics.mean([u_x , u_y ,u_z])
+            picture_name = list(pose)[0]
+            u_x, u_y, u_z, u_azumith, u_tilt, u_roll = list(pose)[7:13]
+            mean_uncertainty_translation = statistics.mean([u_x , u_y , u_z])
             mean_uncertainty_rotation = statistics.mean([u_azumith , u_tilt ,u_roll])
             list_score_translation.append((picture_name,mean_uncertainty_translation))
             list_score_rotation.append((picture_name,mean_uncertainty_rotation))
 
+        # get the best pictures for the translation
         list_sorted_score_translation = sorted(list_score_translation, key=lambda x: x[1])
         dict_sorted_score_translation = dict((x, rank) for rank, (x, y) in enumerate(list_sorted_score_translation))
 
+        # get the best pictures for the rotation
         list_sorted_score_rotation = sorted(list_score_rotation, key=lambda x: x[1])
         dict_sorted_score_rotation = dict((x, rank) for rank, (x, y) in enumerate(list_sorted_score_rotation))
 
+        # assign an overall score per image for translation + rotation
         for picture_name, rank_translation in dict_sorted_score_translation.items() :
             rank_rotation = dict_sorted_score_rotation[picture_name]
             overall_rank = 0.7*rank_translation + rank_rotation*0.3
             dict_score_overall[picture_name] = overall_rank
 
+        # select best pictures
+        list_of_best_rows = []
         dict_sorted_score_overall = dict(sorted(dict_score_overall.items(), key = lambda x: x[1]))
-        for i, picture_name in enumerate(dict_sorted_score_overall.keys()):
-            if i < number_of_best_x_percent :
-                list_of_best_rows.append(picture_name)
+        list_of_best_rows = list(dict_sorted_score_overall.keys())[:number_of_best_x_percent]
     
-    if number_of_col == settings.nbr_col_without_uncertainty :
-        for i,pose in enumerate(ai_competition_result):
-            picture_name, lng, lat, alt, azimuth_est, tilt_est, roll_est = list(pose)
-            list_of_best_rows.append(picture_name)
-    
+    elif number_of_col == settings.nbr_col_without_uncertainty : # if the CSV provided does not contain uncertainty columns
+        list_of_best_rows = [ list(pose)[0] for pose in ai_competition_result] # the list of all picture is provided 
+
     return list_of_best_rows
     
 
@@ -136,17 +142,21 @@ def median_errors(path_csv_estimation : str = settings.path_csv_estimation,
                   path_csv_ground_truth : str = settings.path_csv_ground_truth):
     """
     Compute the median error based on criterias defined by the topo labo.
-    :return: median  error on coordinates and angles.
+    :param path_csv_estimation: path of the estimation CSV file  
+    :param path_csv_ground_truth: path of the ground truth CSV file  
+    :return: median error on coordinates and angles.
     """
-    
+    # Get the list of picture that must be inclued in the median error calcul
     list_of_best_rows = get_min_uncertainty(path_csv_estimation)
     
+    # Get the poses
     ai_competition_result = sixd_csv_array_to_pose(path_csv_estimation)
     ai_competition_gt = sixd_csv_array_to_pose(path_csv_ground_truth)  
 
     list_error_on_coordinates = []
     list_error_on_angles = []
 
+    # Compute the median error for position and translation
     if len(ai_competition_gt) == len(ai_competition_result) :
         for i, item in ai_competition_result.items():
             if i in list_of_best_rows :
@@ -170,10 +180,12 @@ def median_errors(path_csv_estimation : str = settings.path_csv_estimation,
 def uncertainty(path_csv_estimation : str = settings.path_csv_estimation,
                 path_csv_ground_truth : str = settings.path_csv_ground_truth ):
     """
-    Compute the uncertainty based on criterias defined by the topo labo.
+    Compute the uncertainty based on the Uncertainty quality metric
+    :param path_csv_estimation: path of the estimation CSV file  
+    :param path_csv_ground_truth: path of the ground truth CSV file  
     :return: uncertainty on coordinates and angles.
     """
-
+    # Get the poses
     ai_competition_result = np.genfromtxt(path_csv_estimation, delimiter=',')
     ai_competition_ground_truth = np.genfromtxt(path_csv_ground_truth, delimiter=',')
 
@@ -185,17 +197,19 @@ def uncertainty(path_csv_estimation : str = settings.path_csv_estimation,
     uncertainty_array_en_roll = []
 
     dict_ai_competition_ground_truth = {}
-    for i in list(ai_competition_ground_truth) :
-        picture_name, lng, lat, alt, azimuth_gt, tilt_gt, roll_gt = i
+    for pose in list(ai_competition_ground_truth) :
+        picture_name, lng, lat, alt, azimuth_gt, tilt_gt, roll_gt = pose
         dict_ai_competition_ground_truth[int(picture_name)] = [lng, lat, alt, azimuth_gt, tilt_gt, roll_gt]
 
-
-    if len(ai_competition_result[0]) == 13 :
+    if len(ai_competition_result[0]) == settings.nbr_col_with_uncertainty : # if the CSV provided contains uncertainty columns
         for i,pose in enumerate(ai_competition_result):
+            # estimation 
             picture_name_est, lng, lat, alt, azimuth_est, tilt_est, roll_est, u_x, u_y, u_z, u_azumith, u_tilt, u_roll = list(pose)
             [x_est,y_est,z_est] = wgs84_to_ecef(lat,lng, alt)
+            # ground truth
             lng, lat, alt, azimuth_gt, tilt_gt, roll_gt = dict_ai_competition_ground_truth.get(int(picture_name_est))
             [x_gt, y_gt, z_gt] = wgs84_to_ecef(lat, lng, alt)
+            # compute en values
             en_x = abs(float(x_gt - x_est) / math.sqrt(pow(settings.u_val_tranlation, 2) + pow(u_x, 2)))
             uncertainty_array_en_x.append(en_x)
             en_y = abs(float(y_gt - y_est) / math.sqrt(pow(settings.u_val_tranlation, 2) + pow(u_y, 2)))
@@ -207,10 +221,9 @@ def uncertainty(path_csv_estimation : str = settings.path_csv_estimation,
             en_tilt = abs(difference_between_angles(tilt_gt, tilt_est) / math.sqrt(pow(settings.u_val_rotation, 2) + pow(u_tilt, 2)))
             uncertainty_array_en_tilt.append(en_tilt)
             en_roll = abs(difference_between_angles(roll_gt, roll_est) / math.sqrt(pow(settings.u_val_rotation, 2) + pow(u_roll, 2)))
-
             uncertainty_array_en_roll.append(en_roll)
 
-
+        # compute median en values
         median_uncertainty_en_x = abs(float(np.median(uncertainty_array_en_x)))
         median_uncertainty_en_y = abs(float(np.median(uncertainty_array_en_y)))
         median_uncertainty_en_z = abs(float(np.median(uncertainty_array_en_z)))
@@ -218,26 +231,24 @@ def uncertainty(path_csv_estimation : str = settings.path_csv_estimation,
         median_uncertainty_en_tilt = abs(float(np.median(uncertainty_array_en_tilt)))
         median_uncertainty_en_roll = abs(float(np.median(uncertainty_array_en_roll)))
 
-
+        # compute mean translation and rotation en values
         mean_translation = statistics.mean([median_uncertainty_en_x , median_uncertainty_en_y ,median_uncertainty_en_z])
         mean_rotation = statistics.mean([median_uncertainty_en_azimuth , median_uncertainty_en_tilt ,median_uncertainty_en_roll])
 
-    
     else :
         mean_translation = None
         mean_rotation = None
 
-    
     return mean_translation, mean_rotation
 
 
 def scoring(path_csv_estimation : str = settings.path_csv_estimation,
             path_csv_ground_truth : str = settings.path_csv_ground_truth ):
     """
-    This function return the scoring based on the metrics developped by the topo lab.
+    This function return the scoring for the subitted csv file.
     :param path_csv_estimation: path of the csv loaded by the user
     :param path_csv_ground_truth: path of the ground truth csv
-    :return: the score
+    :return: dictonary with the overall score + details scores
     """
 
     csv_formating_status = check_csv_format(path_csv_estimation, path_csv_ground_truth)
@@ -265,7 +276,6 @@ def scoring(path_csv_estimation : str = settings.path_csv_estimation,
         else :
             score_u_on_angles = 0
 
-
         score_error = score_on_coordinates * settings.scoring_ratio_on_coordinate + score_on_angle * (1-settings.scoring_ratio_on_coordinate)
         result['score_error'] = score_error
         score_uncertainty = score_u_on_coordinates * settings.scoring_ratio_on_coordinate +  score_u_on_angles * (1-settings.scoring_ratio_on_coordinate)
@@ -276,7 +286,6 @@ def scoring(path_csv_estimation : str = settings.path_csv_estimation,
         result['median_error_on_angles'] = median_error_on_angles
         result['uncertainty_on_coordinates'] = uncertainty_on_coordinates
         result['uncertainty_on_angles'] = uncertainty_on_angles
-
 
     else :
         result['score_overall'] = 0
