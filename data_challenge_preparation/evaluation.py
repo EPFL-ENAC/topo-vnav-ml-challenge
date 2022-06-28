@@ -1,5 +1,5 @@
 """
-This file aims to evalutate the file uploaded into codalab.
+This file aims to score the file uploaded into codalab.
 Metrics (median errors, uncertainty) have been defined by the topo laboratory
 ---
 regis.longchamp@epfl.ch
@@ -25,7 +25,6 @@ def check_csv_format(path_csv_estimation, path_csv_ground_truth):
     :return: dictionary containing succeed = True or False
     :rtype: dict
     """
-
     test_result = {}
     test_result['succeed'] = True
     test_result['details'] = []
@@ -84,27 +83,28 @@ def sixd_csv_array_to_pose(path_csv_file):
 
 
 
-def get_min_uncertainty(path_csv_estimation : str = settings.path_csv_estimation) :
+def define_images_subset(path_csv_estimation : str = settings.path_csv_estimation) :
     """
-    Return a list of the X best picture IDs (pictures names) regarding the uncertainty.
+    Return a list of the X best picture IDs (pictures names) based on the uncertainty.
     X depends on the paramter u_val_best_x_percent
     :param path_csv_estimation: path of the estimation CSV file  
     :return: list containing the picture IDs
     """
 
-    ai_competition_result = np.genfromtxt(path_csv_estimation, delimiter=',')
-    number_of_col = min([len(i) for i in ai_competition_result])
+    estimation_poses = np.genfromtxt(path_csv_estimation, delimiter=',')
+    number_of_col = min([len(i) for i in estimation_poses])
     
     # Define the number of picture
-    number_of_row = len(ai_competition_result)
-    number_of_best_x_percent = round(number_of_row/100*settings.u_val_best_x_percent)
+    number_of_row = len(estimation_poses)
+    number_of_best_x_percent = math.ceil(number_of_row/100*settings.u_val_best_x_percent)
+    print('number_of_best_x_percent',number_of_best_x_percent)
  
     list_score_translation = list()
     list_score_rotation = list()
     dict_score_overall = dict()
 
     if number_of_col == settings.nbr_col_with_uncertainty : # if the CSV provided contains uncertainty columns
-        for i,pose in enumerate(ai_competition_result):
+        for i,pose in enumerate(estimation_poses):
             picture_name = list(pose)[0]
             u_x, u_y, u_z, u_azumith, u_tilt, u_roll = list(pose)[7:13]
             mean_uncertainty_translation = statistics.mean([u_x , u_y , u_z])
@@ -123,18 +123,17 @@ def get_min_uncertainty(path_csv_estimation : str = settings.path_csv_estimation
         # assign an overall score per image for translation + rotation
         for picture_name, rank_translation in dict_sorted_score_translation.items() :
             rank_rotation = dict_sorted_score_rotation[picture_name]
-            overall_rank = 0.7*rank_translation + rank_rotation*0.3
+            overall_rank = settings.scoring_ratio_on_coordinate*rank_translation + (1-settings.scoring_ratio_on_coordinate)*rank_rotation
             dict_score_overall[picture_name] = overall_rank
 
         # select best pictures
-        list_of_best_rows = []
-        dict_sorted_score_overall = dict(sorted(dict_score_overall.items(), key = lambda x: x[1]))
-        list_of_best_rows = list(dict_sorted_score_overall.keys())[:number_of_best_x_percent]
+        dict_sorted_score_overall = dict(sorted(dict_score_overall.items(), key = lambda x: [1]))
+        list_of_best_images = list(dict_sorted_score_overall.keys())[:number_of_best_x_percent]
     
     elif number_of_col == settings.nbr_col_without_uncertainty : # if the CSV provided does not contain uncertainty columns
-        list_of_best_rows = [ list(pose)[0] for pose in ai_competition_result] # the list of all picture is provided 
+        list_of_best_images = [ list(pose)[0] for pose in estimation_poses] # the list of all picture is provided 
 
-    return list_of_best_rows
+    return list_of_best_images
     
 
 
@@ -147,21 +146,21 @@ def median_errors(path_csv_estimation : str = settings.path_csv_estimation,
     :return: median error on coordinates and angles.
     """
     # Get the list of picture that must be inclued in the median error calcul
-    list_of_best_rows = get_min_uncertainty(path_csv_estimation)
+    list_of_best_rows = define_images_subset(path_csv_estimation)
     
     # Get the poses
-    ai_competition_result = sixd_csv_array_to_pose(path_csv_estimation)
-    ai_competition_gt = sixd_csv_array_to_pose(path_csv_ground_truth)  
+    pose_estimate = sixd_csv_array_to_pose(path_csv_estimation)
+    pose_ground_truth = sixd_csv_array_to_pose(path_csv_ground_truth)  
 
     list_error_on_coordinates = []
     list_error_on_angles = []
 
     # Compute the median error for position and translation
-    if len(ai_competition_gt) == len(ai_competition_result) :
-        for i, item in ai_competition_result.items():
+    if len(pose_ground_truth) == len(pose_estimate) :
+        for i, item in pose_estimate.items():
             if i in list_of_best_rows :
-                pose_est_i = ai_competition_result[i]
-                pose_gt_i = ai_competition_gt[i]
+                pose_est_i = pose_estimate[i]
+                pose_gt_i = pose_ground_truth[i]
                 transl_err = np.linalg.norm(pose_gt_i[0:3, 3] - pose_est_i[0:3, 3])
                 list_error_on_coordinates.append(transl_err)
                 rot_err = pose_est_i[0:3, 0:3].T.dot(pose_gt_i[0:3, 0:3])
@@ -300,8 +299,7 @@ def scoring(path_csv_estimation : str = settings.path_csv_estimation,
 
 
 if __name__ == '__main__':
-
-    print(json.dumps(scoring()))
+    pass
 
 
 
