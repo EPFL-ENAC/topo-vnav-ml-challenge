@@ -9,7 +9,7 @@ This repository contains codes to setup a codalab machine learning competition b
 Crossloc is a TOPO project that aims to to localize the aerial images by predicting its scene coordinates, and computing the accurate 6D camera pose.
 
 
-Colalab competion page : [codolab page](https://codalab.lisn.upsaclay.fr/competitions/5227)
+Codalab competion page : [codolab page](https://codalab.lisn.upsaclay.fr/competitions/5481)
 
 Project home page : [here](https://crossloc.github.io/)
 
